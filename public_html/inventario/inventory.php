@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Inventory</title>
+	<title>Producto</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/sweetalert2.css">
 	<link rel="stylesheet" href="css/material.min.css">
@@ -133,7 +133,7 @@
 				</figcaption>
 			</figure>
 			<div class="full-width tittles navLateral-body-tittle-menu">
-				<i class="zmdi zmdi-desktop-mac"></i><span class="hide-on-tablet">&nbsp; Menu</span>
+				<i class="zmdi zmdi-desktop-mac"></i><span class="hide-on-tablet">&nbsp; INVENTORIO</span>
 			</div>
 			<nav class="full-width">
 				<ul class="full-width list-unstyle menu-principal">
@@ -299,70 +299,46 @@
 			</div>
 		</section>
 		<div class="full-width divider-menu-h"></div>
-		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-				<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
-					<thead>
-						<tr>
-							<th class="mdl-data-table__cell--non-numeric">Name</th>
-							<th>Code</th>
-							<th>Stock</th>
-							<th>Price</th>
-							<th>Options</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="mdl-data-table__cell--non-numeric">Product Name</td>
-							<td>Product Code</td>
-							<td>7</td>
-							<td>$77</td>
-							<td><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"><i class="zmdi zmdi-more"></i></button></td>
-						</tr>
-						<tr>
-							<td class="mdl-data-table__cell--non-numeric">Product Name</td>
-							<td>Product Code</td>
-							<td>7</td>
-							<td>$77</td>
-							<td><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"><i class="zmdi zmdi-more"></i></button></td>
-						</tr>
-						<tr>
-							<td class="mdl-data-table__cell--non-numeric">Product Name</td>
-							<td>Product Code</td>
-							<td>7</td>
-							<td>$77</td>
-							<td><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"><i class="zmdi zmdi-more"></i></button></td>
-						</tr>
-						<tr>
-							<td class="mdl-data-table__cell--non-numeric">Product Name</td>
-							<td>Product Code</td>
-							<td>7</td>
-							<td>$77</td>
-							<td><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"><i class="zmdi zmdi-more"></i></button></td>
-						</tr>
-						<tr>
-							<td class="mdl-data-table__cell--non-numeric">Product Name</td>
-							<td>Product Code</td>
-							<td>7</td>
-							<td>$77</td>
-							<td><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"><i class="zmdi zmdi-more"></i></button></td>
-						</tr>
-						<tr>
-							<td class="mdl-data-table__cell--non-numeric">Product Name</td>
-							<td>Product Code</td>
-							<td>7</td>
-							<td>$77</td>
-							<td><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"><i class="zmdi zmdi-more"></i></button></td>
-						</tr>
-						<tr>
-							<td class="mdl-data-table__cell--non-numeric">Product Name</td>
-							<td>Product Code</td>
-							<td>7</td>
-							<td>$77</td>
-							<td><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"><i class="zmdi zmdi-more"></i></button></td>
-						</tr>
-					</tbody>
-				</table>
+		<div class="full-width divider-menu-h"></div>
+					<div class="mdl-grid">
+						<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+							<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+							<thead>
+								<tr>
+									<th class="mdl-data-table__cell--non-numeric">ID</th>
+									<th>IDJuegos</th>
+									<th>Cantidad</th>
+								</tr>
+							</thead>
+							<tbody>
+<?php
+// Conexión a la base de datos
+$conexion = mysqli_connect('localhost', 'root', '', 'oasis_virtual2.0');
+
+// Consulta para obtener los datos de la tabla
+$consulta = "SELECT * FROM inventario";
+$result = mysqli_query($conexion, $consulta);
+                
+// Ejemplo de generación de filas
+while ($fila = mysqli_fetch_assoc($result)) {
+    $id = $fila['id_inventario'];
+    $nombre = $fila['id_juego'];
+    $cantidad = $fila['cantidad'];
+?>
+								<tr>
+									<td class="mdl-data-table__cell--non-numeric"><?php echo $id; ?></td>
+									<td><?php echo $nombre; ?></td>
+									<td><?php echo $cantidad; ?></td>
+									<td>
+										<a style=" color: #337ab7 ; " href="/oasis_virtual/public_html/CRUD/Modificar usuario.php?id=<?php echo $id; ?>" >Editar</a>
+										<a style=" color: #337ab7 ; " class="cursor" onclick="mostrarConfirmacion(<?php echo $id; ?>)">Borrar</a>
+									</td>
+								</tr>
+<?php
+	}
+?>
+							</tbody>
+							</table>
 			</div>
 		</div>
 	</section>
