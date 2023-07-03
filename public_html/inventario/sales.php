@@ -133,7 +133,7 @@
 				</figcaption>
 			</figure>
 			<div class="full-width tittles navLateral-body-tittle-menu">
-				<i class="zmdi zmdi-desktop-mac"></i><span class="hide-on-tablet">&nbsp; DASHBOARD</span>
+				<i class="zmdi zmdi-desktop-mac"></i><span class="hide-on-tablet">&nbsp; VENTAS</span>
 			</div>
 			<nav class="full-width">
 			<ul class="full-width list-unstyle menu-principal">

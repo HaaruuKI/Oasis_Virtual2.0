@@ -380,7 +380,7 @@
 												<input type="date" class="mdl-textfield__input" name="fecha_creacion" >
 											</div>
 											<div class="mdl-textfield mdl-js-textfield">
-												<input type="file">
+												<input type="file" name="img_juego" >
 											</div>
 										</div>
 									</div>
