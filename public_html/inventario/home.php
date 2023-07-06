@@ -1,6 +1,12 @@
-<!-- 
+	<!-- 
 * Copyright 2016 Carlos Eduardo Alfaro Orellana
 -->
+<?php
+require_once ('conexion.php');
+
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">

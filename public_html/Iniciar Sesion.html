@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with FoodHut landing page.">
     <meta name="author" content="Devcrud">
-    <title>Virtual Oasis</title>
+    <title>Iniciar Sesion | Virtual Oasis</title>
    
     <!-- font icons -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
@@ -18,7 +18,6 @@
 
 </head>
 <body>
-<form action="validar usuario.php" method="post">
 
 <!-- Barra de navegacion -->
 <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
@@ -58,22 +57,23 @@
 </nav>
 
 <!-- encabezado -->
+<form action="PHP/validar usuario.php" method="post">
 <header id="home" class="header">
     <div class="overlay text-white text-center">
         <div class="container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" id="book-table">
             <div class="">
-                <h2 class="section-title mb-5">Inicair Sesion</h2>
+                <h2 class="section-title mb-5">Iniciar Sesion</h2>
                 <div class="row mb-5">
                     <!--Text box usuario-->
                     <div style="margin: 37%;" class="col-sm-6 col-md-3 col-xs-12 my-2">
-                        <p>Introduce el nombre de usuario</p><input type="text" name="usuario" class="form-control form-control-lg custom-form-control" placeholder="Usuario">
+                        <p>Introduce el nombre de usuario</p><input type="email" name="correo_usuario" class="form-control form-control-lg custom-form-control" placeholder="Usuario">
                     </div>
                     <!--Text box contraseña-->
                     <div style="margin: 37%;" class="col-sm-6 col-md-3 col-xs-12 my-2">
-                        <p>Introduce la contraseña de usuario</p><input type="password" name="contraseña" class="form-control form-control-lg custom-form-control" placeholder="contraseña">
+                        <p>Introduce la contraseña de usuario</p><input type="password" name="contraseña_usuario" class="form-control form-control-lg custom-form-control" placeholder="contraseña">
                     </div> 
                 </div>
-                <input type="submit" value="Iniciar" class="btn btn-lg btn-primary" id="rounded-btn">
+                <input type="submit" name="submit" value="Iniciar" class="btn btn-lg btn-primary" id="rounded-btn">
             </div>
         </div>
     
