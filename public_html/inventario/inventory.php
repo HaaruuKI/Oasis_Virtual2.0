@@ -19,6 +19,33 @@
 	<script src="js/sweetalert2.min.js" ></script>
 	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
 	<script src="js/main.js" ></script>
+	<style>
+        .confirmacion-borrado {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+        }
+
+        .confirmacion-borrado h2 {
+            margin-top: 0;
+        }
+
+        .confirmacion-borrado .botones {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+		.cursor{
+			cursor: pointer;
+		}
+    </style>
 </head>
 <body>
 	<!-- Notifications area -->
@@ -305,8 +332,9 @@
 							<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
 							<thead>
 								<tr>
-									<th class="mdl-data-table__cell--non-numeric">ID</th>
+									<th>ID</th>
 									<th>IDJuegos</th>
+									<th>Nombre</th>
 									<th>Cantidad</th>
 								</tr>
 							</thead>
@@ -316,29 +344,60 @@
 $conexion = mysqli_connect('localhost', 'root', '', 'oasis_virtual2.0');
 
 // Consulta para obtener los datos de la tabla
-$consulta = "SELECT * FROM inventario";
+$consulta = "SELECT inventario.id_inventario, inventario.id_juego, juegos.nombre_juego, inventario.cantidad 
+FROM inventario 
+INNER JOIN juegos ON inventario.id_juego = juegos.id_juego;";
 $result = mysqli_query($conexion, $consulta);
+?>
                 
-// Ejemplo de generación de filas
-while ($fila = mysqli_fetch_assoc($result)) {
-    $id = $fila['id_inventario'];
-    $nombre = $fila['id_juego'];
-    $cantidad = $fila['cantidad'];
-?>
-								<tr>
-									<td class="mdl-data-table__cell--non-numeric"><?php echo $id; ?></td>
-									<td><?php echo $nombre; ?></td>
-									<td><?php echo $cantidad; ?></td>
-									<td>
-										<a style=" color: #337ab7 ; " href="/oasis_virtual/public_html/CRUD/Modificar usuario.php?id=<?php echo $id; ?>" >Editar</a>
-										<a style=" color: #337ab7 ; " class="cursor" onclick="mostrarConfirmacion(<?php echo $id; ?>)">Borrar</a>
-									</td>
-								</tr>
 <?php
-	}
-?>
+// Verificar si se encontraron resultados
+if ($result->num_rows > 0) {
+// Recorrer los resultados y mostrarlos en la tabla
+	while ($row = $result->fetch_assoc()) {
+		echo "<tr>";
+        echo "<td>" . $row["id_inventario"] . "</td>";
+        echo "<td>" . $row["id_juego"] . "</td>";
+        echo "<td>" . $row["nombre_juego"] . "</td>";
+        echo "<td>" . $row["cantidad"] . "</td>";
+		echo "<td>";
+		echo "<a style=' color: #337ab7 ;' href='/oasis_virtual/public_html/CRUD/Modificar inventario.php?id=". $row["id_inventario"] . "' >Editar</a>";
+		echo "<a style=' color: #337ab7 ;' class='cursor' onclick='mostrarConfirmacion(". $row["id_inventario"] . ")'>Borrar</a>";
+		echo "</td>";
+		echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='4'>No se encontraron resultados.</td></tr>";
+        }
+?>										
 							</tbody>
 							</table>
+							
+		<div class="confirmacion-borrado" id="confirmacionBorrado">
+        <h2>Confirmación de borrado</h2>
+        <p>¿Estás seguro de que deseas borrar esta fila?</p>
+        <div class="botones">
+            <button onclick="borrarFila()">Aceptar</button>
+            <button onclick="cancelarBorrado()">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+        function mostrarConfirmacion(id) {
+            document.getElementById("confirmacionBorrado").style.display = "block";
+            // Puedes almacenar el ID en una variable global para usarlo en la función borrarFila()
+            window.idBorrar = id;
+        }
+
+        function borrarFila() {
+            var id = window.idBorrar;
+            window.location.href = "/oasis_virtual/public_html/CRUD/Borrar inventario.php?id=" + id;
+        }
+
+        function cancelarBorrado() {
+            document.getElementById("confirmacionBorrado").style.display = "none";
+        }
+    </script>
 			</div>
 		</div>
 	</section>
