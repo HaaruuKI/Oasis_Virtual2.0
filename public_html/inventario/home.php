@@ -183,26 +183,6 @@ require_once ('conexion.php');
 									</div>
 								</a>
 							</li>
-							<li class="full-width">
-								<a href="payments.php" class="full-width">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-card"></i>
-									</div>
-									<div class="navLateral-body-cr hide-on-tablet">
-										METODO DE PAGO
-									</div>
-								</a>
-							</li>
-							<li class="full-width">
-								<a href="categories.html" class="full-width">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-label"></i>
-									</div>
-									<div class="navLateral-body-cr hide-on-tablet">
-										CATEGORIAS
-									</div>
-								</a>
-							</li>
 						</ul>
 					</li>
 					<li class="full-width divider-menu-h"></li>

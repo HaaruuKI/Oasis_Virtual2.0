@@ -2,7 +2,7 @@
 <!-- Insertar los datos de "Registrar" -->
 <?php
 // Crea una conexion en la base de datos
-$mysqli = new mysqli("localhost", "root", "", "oasis_virtual");
+$mysqli = new mysqli("localhost", "root", "", "oasis_virtual2.0");
 
 // Verifica si la conexion fue exitosa
 if ($mysqli->connect_error) {
@@ -11,15 +11,15 @@ if ($mysqli->connect_error) {
 
 // Obtiene los datos de el fomulario HTML
 
-$usuario = $_POST["usuario"];
-$fecha_nacimiento = $_POST["fecha_nacimiento"];
-$contraseña = $_POST["contraseña"];
-$numero_telefono = $_POST["numero_telefono"];
-$pais = $_POST["pais"];
+
+$nombre_usuario = $_POST["nombre_usuario"];
+$pais_usuario = $_POST["pais_usuario"];
+$correo_usuario = $_POST["correo_usuario"];
+$contraseña_usuario = $_POST["contraseña_usuario"];
 
 // Insertar los datos a la base de datos
-$sql = "INSERT INTO cliente (usuario, fecha_nacimiento, contraseña, numero_telefono, pais)
-VALUES ('$usuario', '$fecha_nacimiento', '$contraseña','$numero_telefono','$pais')";
+$sql = "INSERT INTO usuario (nombre_usuario, pais_usuario, correo_usuario, contraseña_usuario)
+VALUES ('$nombre_usuario', '$pais_usuario','$correo_usuario','$contraseña_usuario')";
 
 // Corre el query
 $result = $mysqli->query($sql);
