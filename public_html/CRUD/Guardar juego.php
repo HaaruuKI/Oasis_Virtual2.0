@@ -14,6 +14,8 @@ if ($conexion->connect_error) {
     die("Error de conexión a la base de datos: " . $conexion->connect_error);
 }
 
+
+
 // Obtener los valores del formulario
 $nombre_juego = $_POST['nombre_juego'];
 $descripcion = $_POST['descripcion'];
@@ -25,6 +27,9 @@ $descuento = $_POST['descuento'];
 $cantidad = $_POST['cantidad'];
 $fecha_creacion = $_POST['fecha_creacion'];
 
+$genero = implode(",", $genero);
+
+
 // Preparar la consulta de inserción
 $sql = "INSERT INTO juegos (nombre_juego, descripcion, plataforma, genero, desarrollador, precio, descuento, cantidad, fecha_creacion)
         VALUES ('$nombre_juego', '$descripcion', '$plataforma', '$genero', '$desarrollador', '$precio', '$descuento', '$cantidad', '$fecha_creacion')";
@@ -35,6 +40,7 @@ if ($conexion->query($sql) === TRUE) {
 } else {
     echo "Error al agregar el juego: " . $conexion->error;
 }
+
 
 // Cerrar la conexión a la base de datos
 $conexion->close();

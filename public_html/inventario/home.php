@@ -366,7 +366,7 @@ $mysqli->close();
 				</div>
 				<a href="providers.php"><i class="zmdi zmdi-truck tile-icon"></i></a>
 			</article>
-			<article class="full-width tile">
+			<!-- <article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
 						<br>
@@ -374,7 +374,7 @@ $mysqli->close();
 					</span>
 				</div>
 				<i class="zmdi zmdi-label tile-icon"></i>
-			</article>
+			</article> -->
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
@@ -394,10 +394,10 @@ $mysqli->close();
 				<a href="sales.php"><i class="zmdi zmdi-shopping-cart tile-icon"></i></a>
 			</article>
 		</section>
-		<section class="full-width" style="margin: 30px 0;">
-			<h3 class="text-center tittles">RESPONSIVE TIMELINE</h3>
+		<!-- <section class="full-width" style="margin: 30px 0;">
+			<h3 class="text-center tittles">RESPONSIVE TIMELINE</h3> -->
 			<!-- TimeLine -->
-			<div id="timeline-c" class="timeline-c">
+			<!-- <div id="timeline-c" class="timeline-c">
 				<div class="timeline-c-box">
 	                <div class="timeline-c-box-icon bg-info">
 	                    <i class="zmdi zmdi-twitter"></i>
@@ -447,7 +447,7 @@ $mysqli->close();
 	                </div>
 	            </div>
 			</div>
-		</section>
+		</section> -->
 	</section>
 </body>
 </html>

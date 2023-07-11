@@ -20,6 +20,20 @@
 	<script src="js/sweetalert2.min.js" ></script>
 	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
 	<script src="js/main.js" ></script>
+	<style>
+    /* Estilo para el botón de eliminar */
+    .eliminar-btn {
+      background-color: transparent;
+      border: none;
+      color: red;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .eliminar-btn:hover {
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 	<!-- Notifications area -->
@@ -307,21 +321,60 @@
 												<span class="mdl-textfield__error">Decripcion Invalida</span>
 											</div>
 											<div class="mdl-textfield mdl-js-textfield">
-												<select name="genero" class="mdl-textfield__input">
-													<option value="" disabled="" selected="">Seleccionar categoria</option>
-													<option value="Accion">Accion</option>
-													<option value="Aventura">Aventura</option>
-													<option value="Arcade">Arcade</option>
-													<option value="Deportes">Deportes</option>
-													<option value="Estrategia">Estrategia</option>
-													<option value="Simulacion">Simulacion</option>
-													<option value="Musicales">Musicales</option>
-													<option value="Disparos">Disparos</option>
-													<option value="Pelea">Pelea</option>
-													<option value="Puzzle">Puzzle</option>
-													<option value="Carreras">Carreras</option>
-													<option value="RPG">RPG</option>
-												</select>
+												<label>
+													<input type="checkbox" name="genero[]" value="Acción"> Acción
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Aventura"> Aventura
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Rol (RPG)"> Rol (RPG)
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Estrategia"> Estrategia    											
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Simulación"> Simulación
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Deportes"> Deportes <br>
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Disparos (Shooter)"> Disparos (Shooter)												
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Lucha"> Lucha													
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Carreras">Carreras												
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Mundo abierto"> Mundo abierto
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Sandbox"> Sandbox <br>
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Puzzle"> Puzzle
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Terror"> Terror
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="MMO"> MMO 
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Estrategia en tiempo real"> Estrategia en tiempo real
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Roguelike"> Roguelike <br>
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Realidad virtual (VR)"> Realidad virtual (VR) 
+												</label>
+												<label>
+													<input type="checkbox" name="genero[]" value="Novela visual"> Novela visual
+												</label>
 											</div>
 											<h5 class="text-condensedLight">Unidades y Precio</h5>
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -360,7 +413,7 @@
 												<input type="date" class="mdl-textfield__input" name="fecha_creacion" >
 											</div>
 											<div class="mdl-textfield mdl-js-textfield">
-												<input type="file" name="img_juego" >
+												<input type="file" name="imagenes" >
 											</div>
 										</div>
 									</div>
@@ -467,3 +520,19 @@
 	</section>
 </body>
 </html>
+
+			<!-- <select name="genero" class="mdl-textfield__input">
+													<option value="" disabled="" selected="">Seleccionar categoria</option>
+													<option value="Accion">Accion</option>
+													<option value="Aventura">Aventura</option>
+													<option value="Arcade">Arcade</option>
+													<option value="Deportes">Deportes</option>
+													<option value="Estrategia">Estrategia</option>
+													<option value="Simulacion">Simulacion</option>
+													<option value="Musicales">Musicales</option>
+													<option value="Disparos">Disparos</option>
+													<option value="Pelea">Pelea</option>
+													<option value="Puzzle">Puzzle</option>
+													<option value="Carreras">Carreras</option>
+													<option value="RPG">RPG</option>
+												</select> -->
