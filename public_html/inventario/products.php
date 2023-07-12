@@ -37,19 +37,40 @@
         <style>img {aspect-ratio: 2/1; object-fit: cover;}</style>
 
 		<style>
-        .dropdown{
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content{
+        .confirmacion-borrado {
             display: none;
-            position: absolute;
-            z-index: 1;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
         }
-        .dropdown:hover .dropdown-content{
-            display: block;
+
+        .confirmacion-borrado h2 {
+            margin-top: 0;
         }
+
+        .confirmacion-borrado .botones {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+		.cursor{
+			cursor: pointer;
+		}
     </style>
+		<script>
+        function confirmarBorrado(id) {
+            var confirmacion = confirm("¿Estás seguro de que deseas borrar esta fila?");
+            if (confirmacion) {
+                window.location.href = "../CRUD/Borrar juego.php?id=" + id;
+            }
+        }
+    </script>
 </head>
 <body>
 	<!-- Notifications area -->
@@ -429,7 +450,7 @@
 												<input type="date" class="mdl-textfield__input" name="fecha_creacion" >
 											</div>
 											<div class="mdl-textfield mdl-js-textfield">
-												<input type="file" name="imagen" id="imagen" >
+												<input type="file" name="imagen" id="imagen"  >
 											</div>
 										</div>
 									</div>
@@ -459,16 +480,14 @@
 								</div>
 							</div>
 						</form>
-						<nav class="full-width menu-categories">
+						<!-- <nav class="full-width menu-categories">
 							<ul class="list-unstyle text-center">
 								<li><a href="#!">Category 1</a></li>
 								<li><a href="#!">Category 2</a></li>
 								<li><a href="#!">Category 3</a></li>
 								<li><a href="#!">Category 4</a></li>
 							</ul>
-						</nav>
-
-
+						</nav> -->
 <?php 
 	include('conexion.php');
 	$query = "SELECT * FROM juegos";
@@ -492,19 +511,46 @@
 	<div class="mdl-card__actions ">
 	
 	<?php echo $row['nombre_juego']; ?>
-	<a class="btn btn-danger btn-del" href="../CRUD/Borrar juego.php?id=<?php echo $row['id_juego'];?> ">
+	<a class="btn btn-danger btn-del" href="../CRUD/Modificar juego.php?id=<?php echo $id; ?>">
 	<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-		<i class="zmdi zmdi-more"></i>
+		E
+	</button>
+	</a>
+	<a class="btn btn-danger btn-del" onclick="mostrarConfirmacion(<?php echo $id; ?>)">
+	<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+		B
 	</button>
 	</a>
 	
 	</div>
 </div>
-<?php }?>
+<?php }?>	
 
+<div class="confirmacion-borrado" id="confirmacionBorrado">
+        <h2>Confirmación de borrado</h2>
+        <p>¿Estás seguro de que deseas borrar este juego?</p>
+        <div class="botones">
+            <button onclick="borrarFila()">Aceptar</button>
+            <button onclick="cancelarBorrado()">Cancelar</button>
+        </div>
+    </div>
 
+    <script>
+        function mostrarConfirmacion(id) {
+            document.getElementById("confirmacionBorrado").style.display = "block";
+            // Puedes almacenar el ID en una variable global para usarlo en la función borrarFila()
+            window.idBorrar = id;
+        }
 
-				
+        function borrarFila() {
+            var id = window.idBorrar;
+            window.location.href = "../CRUD/Borrar juego.php?id=" + id;
+        }
+
+        function cancelarBorrado() {
+            document.getElementById("confirmacionBorrado").style.display = "none";
+        }
+    </script>			
 						</div>
 					</div>
 				</div>
@@ -513,19 +559,3 @@
 	</section>
 </body>
 </html>
-
-			<!-- <select name="genero" class="mdl-textfield__input">
-													<option value="" disabled="" selected="">Seleccionar categoria</option>
-													<option value="Accion">Accion</option>
-													<option value="Aventura">Aventura</option>
-													<option value="Arcade">Arcade</option>
-													<option value="Deportes">Deportes</option>
-													<option value="Estrategia">Estrategia</option>
-													<option value="Simulacion">Simulacion</option>
-													<option value="Musicales">Musicales</option>
-													<option value="Disparos">Disparos</option>
-													<option value="Pelea">Pelea</option>
-													<option value="Puzzle">Puzzle</option>
-													<option value="Carreras">Carreras</option>
-													<option value="RPG">RPG</option>
-												</select> -->
