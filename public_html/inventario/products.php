@@ -34,6 +34,22 @@
       font-weight: bold;
     }
   </style>
+        <style>img {aspect-ratio: 2/1; object-fit: cover;}</style>
+
+		<style>
+        .dropdown{
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content{
+            display: none;
+            position: absolute;
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content{
+            display: block;
+        }
+    </style>
 </head>
 <body>
 	<!-- Notifications area -->
@@ -306,7 +322,7 @@
 								Nuevo Producto
 							</div>
 							<div class="full-width panel-content">
-							<form action="/oasis_virtual/public_html/CRUD/funciones.php" method="post" enctype="multipart/form-data" >
+							<form action="../CRUD/Guardar juego.php" method="post" enctype="multipart/form-data" >
 									<div class="mdl-grid">
 										<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
 											<h5 class="text-condensedLight">Informaticion Basica</h5>
@@ -451,67 +467,44 @@
 								<li><a href="#!">Category 4</a></li>
 							</ul>
 						</nav>
-						<div class="full-width text-center" style="padding: 30px 0;">
-							<div class="mdl-card mdl-shadow--2dp full-width product-card">
-								<div class="mdl-card__title">
-									<img src="assets/img/fontLogin.jpg" alt="product" class="img-responsive">
-								</div>
-								<div class="mdl-card__supporting-text">
-									<small>Stock</small><br>
-									<small>Category</small>
-								</div>
-								<div class="mdl-card__actions mdl-card--border">
-									Product name
-									<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-										<i class="zmdi zmdi-more"></i>
-									</button>
-								</div>
-							</div>
-							<div class="mdl-card mdl-shadow--2dp full-width product-card">
-								<div class="mdl-card__title">
-									<img src="assets/img/fontLogin.jpg" alt="product" class="img-responsive">
-								</div>
-								<div class="mdl-card__supporting-text">
-									<small>Stock</small><br>
-									<small>Category</small>
-								</div>
-								<div class="mdl-card__actions mdl-card--border">
-									Product name
-									<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-										<i class="zmdi zmdi-more"></i>
-									</button>
-								</div>
-							</div>
-							<div class="mdl-card mdl-shadow--2dp full-width product-card">
-								<div class="mdl-card__title">
-									<img src="assets/img/fontLogin.jpg" alt="product" class="img-responsive">
-								</div>
-								<div class="mdl-card__supporting-text">
-									<small>Stock</small><br>
-									<small>Category</small>
-								</div>
-								<div class="mdl-card__actions mdl-card--border">
-									Product name
-									<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-										<i class="zmdi zmdi-more"></i>
-									</button>
-								</div>
-							</div>
-							<div class="mdl-card mdl-shadow--2dp full-width product-card">
-								<div class="mdl-card__title">
-									<img src="assets/img/fontLogin.jpg" alt="product" class="img-responsive">
-								</div>
-								<div class="mdl-card__supporting-text">
-									<small>Stock</small><br>
-									<small>Category</small>
-								</div>
-								<div class="mdl-card__actions mdl-card--border">
-									Product name
-									<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-										<i class="zmdi zmdi-more"></i>
-									</button>
-								</div>
-							</div>
+
+
+<?php 
+	include('conexion.php');
+	$query = "SELECT * FROM juegos";
+	$resultado = mysqli_query($mysqli,$query);
+
+	foreach($resultado as $row){
+		$id = $row['id_juego'];
+?>
+
+<div class="full-width text-left" style="padding: 30px 0;">
+	<div class="mdl-card mdl-shadow--2dp full-width product-card" style="width: 500px; " >
+
+	<div class="mdl-card__title">
+		<img src="../imgs/<?php echo $row['imagen']; ?>" alt="..." class="img-responsive">
+	</div>
+	<div class="mdl-card__supporting-text">
+	<input type="hidden" <?php echo $id ; ?>>
+		<small>Cantidad <br><?php echo $row['cantidad']; ?></small><br>
+		<small>Genero <br> <?php echo $row['genero']; ?></small>
+	</div>
+	<div class="mdl-card__actions ">
+	
+	<?php echo $row['nombre_juego']; ?>
+	<a class="btn btn-danger btn-del" href="../CRUD/Borrar juego.php?id=<?php echo $row['id_juego'];?> ">
+	<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+		<i class="zmdi zmdi-more"></i>
+	</button>
+	</a>
+	
+	</div>
+</div>
+<?php }?>
+
+
+
+				
 						</div>
 					</div>
 				</div>

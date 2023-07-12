@@ -1,22 +1,6 @@
 <?php
-	
-// Configuración de la base de datos
-$host = "localhost";
-$usuario = "root";
-$contrasena = "";
-$base_datos = "oasis_virtual2.0";
+require_once('conexion.php');
 
-// Conexión a la base de datos
-$conexion = new mysqli($host, $usuario, $contrasena, $base_datos);
-
-// Verificar la conexión
-if ($conexion->connect_error) {
-    die("Error de conexión a la base de datos: " . $conexion->connect_error);
-}
-
-
-
-// Obtener los valores del formulario
 $nombre_juego = $_POST['nombre_juego'];
 $descripcion = $_POST['descripcion'];
 $plataforma = $_POST['plataforma'];
@@ -26,20 +10,26 @@ $precio = $_POST['precio'];
 $descuento = $_POST['descuento'];
 $cantidad = $_POST['cantidad'];
 $fecha_creacion = $_POST['fecha_creacion'];
-$imagen = $_POST['$imagen'];
 
 $genero = implode(",", $genero);
 
-
-// Preparar la consulta de inserción
-$sql = "INSERT INTO juegos (nombre_juego, descripcion, plataforma, genero, desarrollador, precio, descuento, cantidad, fecha_creacion, imagen)
-        VALUES ('$nombre_juego', '$descripcion', '$plataforma', '$genero', '$desarrollador', '$precio', '$descuento', '$cantidad', '$fecha_creacion', '$imagen')";
-$resultado = ($conexion->query($sql) === TRUE);
-// Ejecutar la consulta de inserción
-if ($conexion->query($sql) === TRUE) {
+if(isset($_REQUEST['submit'])){
+    $nombre_imagenes = $_FILES['imagen']['name'];
+    $temporal = $_FILES['imagen']['tmp_name'];
+    $carpeta = '../assets/imgs';
+    $ruta = $carpeta.'/'.$nombre_imagenes;
     
-} else {
-    echo "Error al agregar el juego: " . $conexion->error;
+    move_uploaded_file($temporal,$carpeta.'/'. $nombre_imagen);
+
+    $query="INSERT INTO juegos (nombre_juego, descripcion,plataforma, genero, desarrollador, precio, descuento, cantidad, fecha_creacion, imagen) 
+    VALUES('$nombre_juego', '$descripcion', '$plataforma', '$genero', '$desarrollador', '$precio', '$descuento', '$cantidad', '$fecha_creacion','$ruta')";
+    $execute = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
+
+    if($execute){
+        header("Location: ../inventario/products.php");
+    }else{
+        echo "hubo un error"; 
+    }
 }
 
 // Cerrar la conexión a la base de datos
