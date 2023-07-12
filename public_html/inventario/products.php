@@ -306,7 +306,7 @@
 								Nuevo Producto
 							</div>
 							<div class="full-width panel-content">
-								<form class="form-horizontal" method="post" action="/oasis_virtual/public_html/CRUD/Guardar juego.php" autocomplete="off" >
+							<form action="/oasis_virtual/public_html/CRUD/funciones.php" method="post" enctype="multipart/form-data" >
 									<div class="mdl-grid">
 										<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
 											<h5 class="text-condensedLight">Informaticion Basica</h5>
@@ -413,12 +413,12 @@
 												<input type="date" class="mdl-textfield__input" name="fecha_creacion" >
 											</div>
 											<div class="mdl-textfield mdl-js-textfield">
-												<input type="file" name="imagenes" >
+												<input type="file" name="imagen" id="imagen" >
 											</div>
 										</div>
 									</div>
 									<p class="text-center">
-										<button name="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addProduct">
+										<button name="submit" id="submit class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addProduct">
 											<i class="zmdi zmdi-plus"></i>
 										</button>
 										<div class="mdl-tooltip" for="btn-addProduct">Agregar Producto</div>

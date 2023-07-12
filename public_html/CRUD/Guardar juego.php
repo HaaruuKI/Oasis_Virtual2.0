@@ -26,13 +26,14 @@ $precio = $_POST['precio'];
 $descuento = $_POST['descuento'];
 $cantidad = $_POST['cantidad'];
 $fecha_creacion = $_POST['fecha_creacion'];
+$imagen = $_POST['$imagen'];
 
 $genero = implode(",", $genero);
 
 
 // Preparar la consulta de inserción
-$sql = "INSERT INTO juegos (nombre_juego, descripcion, plataforma, genero, desarrollador, precio, descuento, cantidad, fecha_creacion)
-        VALUES ('$nombre_juego', '$descripcion', '$plataforma', '$genero', '$desarrollador', '$precio', '$descuento', '$cantidad', '$fecha_creacion')";
+$sql = "INSERT INTO juegos (nombre_juego, descripcion, plataforma, genero, desarrollador, precio, descuento, cantidad, fecha_creacion, imagen)
+        VALUES ('$nombre_juego', '$descripcion', '$plataforma', '$genero', '$desarrollador', '$precio', '$descuento', '$cantidad', '$fecha_creacion', '$imagen')";
 $resultado = ($conexion->query($sql) === TRUE);
 // Ejecutar la consulta de inserción
 if ($conexion->query($sql) === TRUE) {
@@ -40,7 +41,6 @@ if ($conexion->query($sql) === TRUE) {
 } else {
     echo "Error al agregar el juego: " . $conexion->error;
 }
-
 
 // Cerrar la conexión a la base de datos
 $conexion->close();
