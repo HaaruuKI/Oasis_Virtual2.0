@@ -16,6 +16,24 @@ $id = $_GET['id'];
 		<link href="cssss/bootstrap-theme.css" rel="stylesheet">
 		<script src="js/jquery-3.1.1.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>	
+		
+		<script>
+    function actualizarTexto() {
+    var checkboxes = document.getElementsByName('genero[]');
+    var texto = '';
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+        if (texto !== '') {
+            texto += ', ';
+        }
+        texto += checkboxes[i].value;
+        }
+    }
+
+    document.getElementById('resultado').value = texto;
+    }
+</script>
 	</head>
 	
 	<body>
@@ -24,7 +42,7 @@ $id = $_GET['id'];
 				<h3 style="text-align:center">MODIFICAR PROVEEDOR</h3>
 			</div>
 			
-			<form class="form-horizontal" method="POST" action="Update juego.php" autocomplete="off">
+			<form class="form-horizontal" method="POST" action="Update juego.php" autocomplete="off" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="nombre" class="col-sm-2 control-label">Nombre del juego</label>
 					<div class="col-sm-10">
@@ -50,64 +68,64 @@ $id = $_GET['id'];
 				<label style="padding-left: 110px;">Genero</label>
 				<div style="padding-left: 200px;" class="mdl-textfield mdl-js-textfield">
 												<label>
-													<input type="checkbox" name="genero[]" value="Acción"> Acción
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Acción"> Acción
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Aventura"> Aventura
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Aventura"> Aventura
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Rol (RPG)"> Rol (RPG)
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Rol (RPG)"> Rol (RPG)
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Estrategia"> Estrategia    											
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Estrategia"> Estrategia    											
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Simulación"> Simulación
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Simulación"> Simulación
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Deportes"> Deportes <br>
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Deportes"> Deportes <br>
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Disparos (Shooter)"> Disparos (Shooter)												
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Disparos (Shooter)"> Disparos (Shooter)												
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Lucha"> Lucha													
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Lucha"> Lucha													
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Carreras">Carreras												
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Carreras">Carreras												
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Mundo abierto"> Mundo abierto
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Mundo abierto"> Mundo abierto
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Sandbox"> Sandbox <br>
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Sandbox"> Sandbox <br>
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Puzzle"> Puzzle
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Puzzle"> Puzzle
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Terror"> Terror
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Terror"> Terror
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="MMO"> MMO 
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="MMO"> MMO 
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Estrategia en tiempo real"> Estrategia en tiempo real
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Estrategia en tiempo real"> Estrategia en tiempo real
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Roguelike"> Roguelike <br>
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Roguelike"> Roguelike <br>
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Realidad virtual (VR)"> Realidad virtual (VR) 
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Realidad virtual (VR)"> Realidad virtual (VR) 
 												</label>
 												<label>
-													<input type="checkbox" name="genero[]" value="Novela visual"> Novela visual
+													<input id="miCheckbox" onchange="actualizarTexto()" type="checkbox" name="genero[]" value="Novela visual"> Novela visual
 												</label>
 											</div>
 											
 				<div class="form-group">
 					<div class="col-sm-10" style="padding-left: 210px;">
-						<input type="text" class="form-control" id="genero" name="genero" placeholder="Genero" value="<?php echo $row['genero']; ?>" required>
+						<input type="text" class="form-control" id="resultado" name="genero" placeholder="Genero" value="<?php echo $row['genero']; ?>" required>
 					</div>
 				</div>
 				<div class="form-group">
@@ -140,15 +158,21 @@ $id = $_GET['id'];
 						<input type="date" class="form-control" id="fecha_creacion" name="fecha_creacion" placeholder="Fecha de creacion" value="<?php echo $row['fecha_creacion']; ?>" required>
 					</div>
 				</div>
-				<!-- <div class="form-group">
-					<label for="correo" class="col-sm-2 control-label">Imagen</label>
+				<div class="form-group">
 					<div class="col-sm-10">
-						<input type="file" class="form-control" id="imagen" name="Imagen" placeholder="imagen" value="<?php echo $row['imagen']; ?>" required>
+						<label for="imagen" class="col-sm-2 control-label">Imagen</label>
+						<img style="padding-left: 25%;" src="../imgs/<?php echo $row['imagen']; ?>" alt="..." class="img-responsive">
 					</div>
-				</div> -->
+				</div>
+				<div class="form-group">
+					<label for="correo" class="col-sm-2 control-label">Cambiar imagen</label>
+					<div class="col-sm-10">
+						<input type="file"  id="imagen" name="imagen"  required>
+					</div>
+				</div> 
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<a href="/oasis_virtual/public_html/inventario/providers.php" class="btn btn-default">Regresar</a>
+						<a href="../inventario/products.php" class="btn btn-default">Regresar</a>
 						<button name="submit" id="submit " type="submit" class="btn btn-primary">Guardar</button>
 					</div>
 				</div>

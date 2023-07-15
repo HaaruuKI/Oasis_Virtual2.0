@@ -485,4 +485,3 @@ while ($fila = mysqli_fetch_assoc($result)) {
 		</div>
 	</section>
 </body>
-</html>
