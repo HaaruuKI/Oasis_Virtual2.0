@@ -488,6 +488,7 @@
 								<li><a href="#!">Category 4</a></li>
 							</ul>
 						</nav> -->
+						<div class="table-responsive" >	
 <?php 
 	include('conexion.php');
 	$query = "SELECT * FROM juegos";
@@ -525,6 +526,7 @@
 	</div>
 </div>
 <?php }?>	
+</div>
 
 <div class="confirmacion-borrado" id="confirmacionBorrado">
         <h2>Confirmación de borrado</h2>

@@ -309,7 +309,8 @@
 		<div class="full-width divider-menu-h"></div>
 					<div class="mdl-grid">
 						<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-							<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+						<div class="table-responsive" >		
+						<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
 							<thead>
 								<tr>
 									<th>ID</th>
@@ -352,6 +353,7 @@ if ($result->num_rows > 0) {
 ?>										
 							</tbody>
 							</table>
+							</div>
 							
 		<div class="confirmacion-borrado" id="confirmacionBorrado">
         <h2>Confirmación de borrado</h2>

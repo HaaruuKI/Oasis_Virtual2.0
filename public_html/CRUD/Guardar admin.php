@@ -58,7 +58,7 @@ $conexion->close();
 						<h3>ERROR AL GUARDAR</h3>
 					<?php } ?>
 					
-					<a href="/oasis_virtual/public_html/inventario/products.php" class="btn btn-primary">Regresar</a>
+					<a href=".. /inventario/admin.php" class="btn btn-primary">Regresar</a>
 					
 				</div>
 			</div>

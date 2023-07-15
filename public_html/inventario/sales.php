@@ -282,7 +282,8 @@
 		<div class="full-width divider-menu-h"></div>
 					<div class="mdl-grid">
 						<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-							<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+						<div class="table-responsive" >		
+						<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
 							<thead>
 								<tr>
 									<th class="mdl-data-table__cell--non-numeric">ID</th>
@@ -327,7 +328,7 @@ while ($fila = mysqli_fetch_assoc($result)) {
 ?>
 							</tbody>
 							</table>
-
+</div>
 			</div>
 		</div>
 	</section>
