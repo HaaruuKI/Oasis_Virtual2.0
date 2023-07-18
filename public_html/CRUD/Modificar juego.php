@@ -159,6 +159,12 @@ $id = $_GET['id'];
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="telefono" class="col-sm-2 control-label">Clave-Serial</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="clave" name="clave" placeholder="Clave-Serial" value="<?php echo $row['clave']; ?>" >
+					</div>
+				</div>
+				<div class="form-group">
 					<div class="col-sm-10">
 						<label for="imagen" class="col-sm-2 control-label">Imagen</label>
 						<img style="padding-left: 25%;" src="../imgs/<?php echo $row['imagen']; ?>" alt="..." class="img-responsive">

@@ -449,6 +449,11 @@
 											<div class="mdl-textfield mdl-js-textfield">
 												<input type="date" class="mdl-textfield__input" name="fecha_creacion" >
 											</div>
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+												<input class="mdl-textfield__input" type="text" name="desarrollador" >
+												<label class="mdl-textfield__label" for="markProduct">Clave-Serial</label>
+												<span class="mdl-textfield__error">Desarrollador Invalido</span>
+											</div>
 											<div class="mdl-textfield mdl-js-textfield">
 												<input type="file" name="imagen" id="imagen"  >
 											</div>
