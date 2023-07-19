@@ -1,3 +1,19 @@
+<?php
+
+session_start();
+error_reporting(0);
+
+$validar = $_SESSION['nombre_usuario'];
+
+if( $validar == null || $validar = ''){
+
+  header("Location: ../iniciar sesion usuario.html");
+  die();
+  
+}
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>

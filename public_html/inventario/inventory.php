@@ -1,6 +1,25 @@
-<!-- 
-* Copyright 2016 Carlos Eduardo Alfaro Orellana
--->
+<?php
+
+session_start();
+error_reporting(0);
+
+$validar = $_SESSION['nombre_usuario'];
+
+if( $validar == null || $validar = ''){
+
+  header("Location: ./iniciar sesion usuario.html");
+  die();
+  
+}
+
+
+?>
+<?php
+require_once ('conexion.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -131,7 +150,7 @@
 						<i class="zmdi zmdi-power"></i>
 						<div class="mdl-tooltip" for="btn-exit">LogOut</div>
 					</li>
-					<li class="text-condensedLight noLink" ><small>User Name</small></li>
+					<li class="text-condensedLight noLink" ><small><?php echo $_SESSION['nombre_usuario']; ?></small></li>
 					<li class="noLink">
 						<figure>
 							<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
@@ -154,8 +173,8 @@
 				</div>
 				<figcaption class="navLateral-body-cr hide-on-tablet">
 					<span>
-						Full Name Admin<br>
-						<small>Admin</small>
+						<?php echo $_SESSION['nombre_usuario']; ?><br>
+						<small></small>
 					</span>
 				</figcaption>
 			</figure>

@@ -38,7 +38,7 @@ $(document).ready(function(){
 		},
 		function(isConfirm) {
 			if (isConfirm) {
-				window.location='/oasis_virtual/public_html/index.html'; 
+				window.location='/oasis_virtual/public_html/validar/cerrarSesion.php'; 
 			}
 		});
     });
