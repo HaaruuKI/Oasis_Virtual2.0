@@ -1,0 +1,79 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f1f1f1;
+  }
+  
+  .circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #4CAF50; /* Verde */
+    position: relative;
+  }
+  
+  .checkmark {
+    width: 80px;
+    height: 40px;
+    border: 10px solid rgba(255, 255, 255, 0.8); /* Color transparente */
+    border-top: none;
+    border-right: none;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    transform: rotate(-50deg);
+  }
+  
+/* estilo del body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+.circle {
+    display: inline-block;
+}
+
+h3 {
+    font-size: 4vw;
+    margin-top: 20px;
+}
+
+/* Error */
+.x-shape {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: red; /* Verde */
+    position: relative;
+  }
+
+  
+  .x-shape::before,
+  .x-shape::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 20px;
+    height: 100%;
+    background-color: white;
+  }
+  
+  .x-shape::before {
+    transform: translateX(-50%) rotate(45deg);
+  }
+  
+  .x-shape::after {
+    transform: translateX(-50%) rotate(-45deg);
+  }
+  

@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Iniciar sesion|Oasis Virtual</title>
+  <title>Inicio|Oasis Virtual</title>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="sara mazal lessons">
@@ -16,14 +16,14 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="../css/style.css">
  
   <!-- Bootstrap + FoodHut main styles -->
-	<link rel="stylesheet" href="./assets/css/foodhut.css">
+	<link rel="stylesheet" href="../assets/css/foodhut.css">
 
-<link rel="stylesheet" href="./css/estilos 2.css">
-<link rel="stylesheet" href="./css/responsive.css">
-<link rel="stylesheet" href="./css/login.css">
+<link rel="stylesheet" href=".,/css/estilos 2.css">
+<link rel="stylesheet" href="../css/responsive.css">
+
 <style>img {aspect-ratio: 2/1; object-fit: fill;}</style>
 
 <style>
@@ -35,7 +35,7 @@
   color: #03dac6;
   letter-spacing: 0.1rem;
   transition: all 0.5s ease;
-  font-size: 3vw;
+  font-size: 4vw;
 }
 
 .nav-4:hover {
@@ -45,86 +45,121 @@
 }
 
 </style>
+<style>
+    .platform {
+        margin-bottom: 20px;
+    }
+    .platform img {
+        display: inline-block;
+        margin-right: 10px;
+    }
+</style>
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <sectio class="nav">
   <!-- <span class="m">I</span><span class="m">T</span><span class="m">S</span><span class="m">&nbsp;</span><span class="m">o</span><span class="m">f</span><span class="m">&nbsp;</span><span class="m">T</span><span class="m">E</span><span class="m">C</span><span class="m">H</span><span class="m">N</span><span class="m">O</span><span class="m">L</span><span class="m">O</span><span class="m">G</span><span class="m">I</span><span class="m">E</span><span class="m">S</span> -->
   <!-- <a class="nav-tab" href="#tab-vite"></a><span class="nav-tab-slider"></span> -->
-<h1><a href="#sesion"><h1>INICIAR SESION</h1></a></h1>
-  <h1><a href="index.html"><h1>OASIS VIRTUAL</h1></a></h1>
+  <h1><a href="#juegos"><h1>JUEGOS</h1></a></h1>
+  <h1><a href="../index.html"><h1>OASIS VIRTUAL</h1></a></h1>
   <h3 class="span loader"><span class="m">TU </span><span class="m">ESCAPE </span><span class="m">DE </span><span class="m">LA </span><span class="m">REALIDAD</span></h3>
   <div class="nav-container">
     <a class="nav-tab" href="#">Menu</a>
     <!-- Agregamos el contenido desplegable -->
     <div class="nav-dropdown">
-      <a class="nav-2 nav-3 " href="iniciar sesion usuario.html">Inicar Sesion</a>
-      <a class="nav-2 nav-3" href="registrar usuario.html">Registrarse</a>
+      <a class="nav-2 nav-3" href="../iniciar sesion usuario.html">Inicar Sesion</a>
+      <a class="nav-2 nav-3" href="../registrar usuario.html">Registrarse</a>
     </div>
-      
-    <a class="nav-2" href="index.html">SobreNosotros</a>
-    <a class="nav-4" href="./Lista de juegos/juegos.html">Ver juegos</a>  
-    <a class="nav-2" href="index.html">Galeria</a>
-    <a class="nav-2" href="#Contactos">Contacto</a>
+          
+    <a class="nav-2" href="../index.html">Sobre nosotros</a>
+    <a class="nav-4" href="./juegos.html">Ver juegos</a>
+    <a class="nav-2" href="../index.html">Galeria</a>
+    <a class="nav-tab" href="#Contactos">Contacto</a>
     <button class="scroll-top-btn" onclick="scrollToTop()">
       <i class="fas fa-chevron-up"></i>
     </button>
   </div>
 </sectio>
 <main class="main">
-<section class="slider" id="sesion" >
-<h1>INICIAR SESION</h1>
-    <div class="grid">
-      <form action="validar/validar usuario.php" method="POST" class="form login">
-  
-        <div class="form__field">
-          <label for="login__username"><svg class="icon">
-              <use xlink:href="#icon-user"></use>
-            </svg><span class="hidden">Correo</span></label>
-          <input autocomplete="username" id="login__username" type="text" name="nombre_usuario" class="form__input" placeholder="Correo" required>
-        </div>
-  
-        <div class="form__field">
-          <label for="login__password"><svg class="icon">
-              <use xlink:href="#icon-lock"></use>
-            </svg><span class="hidden">Contraseña</span></label>
-          <input id="login__password" type="password" name="contraseña_usuario" class="form__input" placeholder="Contraseña" required>
-          <input type="hidden" name="accion" value="acceso_user">
-        </div>
-  
-        <div class="form__field">
-          <input type="submit" value="Iniciar">
-        </div>
-  
-      </form>
-  
-      <p class="text--center">Aun no estas registrado? <a href="registrar usuario.html">registrarse ahora</a> <svg class="icon">
-          <use xlink:href="#icon-arrow-right"></use>
-        </svg></p>
-  
-    </div>
-  
-    <svg xmlns="http://www.w3.org/2000/svg" class="icons">
-      <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
-        <path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z" />
-      </symbol>
-      <symbol id="icon-lock" viewBox="0 0 1792 1792">
-        <path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z" />
-      </symbol>
-      <symbol id="icon-user" viewBox="0 0 1792 1792">
-        <path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z" />
-      </symbol>
-    </svg>
-    
-</section> 
-<section class="slider" id="tab-vite">
-    <h1></h1>
-    <h2></h2>
-  </section> 
+  <section class="slider" id="juegos">
+    <div id="gallery"></div>
+
+    <script>
+        function redirectToPage(pageUrl) {
+            window.location.href = pageUrl;
+        }
+
+        // Function to create the HTML structure for each game
+        function createGameElement(game) {
+            return `
+                <figure class="article" onclick="redirectToPage('../Detalles de juegos/Detalles.php?id=${game.id}')">
+                    <img src="${game.imagen}" alt="...">
+                    <figcaption>
+                        <h3>${game.nombre_juego}</h3>
+                        <p>${game.descripcion}</p>
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        // Function to generate the game gallery HTML
+        function generateGallery(gamesData) {
+            const galleryContainer = document.getElementById("gallery");
+
+            let currentPlatform = null;
+            let platformHTML = "";
+
+            gamesData.forEach((game) => {
+                if (currentPlatform !== game.plataforma) {
+                    if (currentPlatform !== null) {
+                        platformHTML += '</div>';
+                        galleryContainer.insertAdjacentHTML("beforeend", platformHTML);
+                    }
+
+                    currentPlatform = game.plataforma;
+                    platformHTML = `
+                        <div class="platform">
+                            <h2><strong>${game.plataforma}</strong></h2>
+                            <div class="news">
+                    `;
+                }
+
+                platformHTML += createGameElement(game);
+            });
+
+            if (currentPlatform !== null) {
+                platformHTML += '</div>';
+                galleryContainer.insertAdjacentHTML("beforeend", platformHTML);
+            }
+        }
+
+        // Fetch the game data from the server using AJAX (Vanilla JavaScript)
+        document.addEventListener("DOMContentLoaded", function() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "Obtener datos.php");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    generateGallery(data);
+                } else {
+                    console.error("Error fetching game data:", xhr.statusText);
+                }
+            };
+            xhr.onerror = function() {
+                console.error("Error fetching game data.");
+            };
+            xhr.send();
+        });
+    </script>
+  </section>
+  <section class="slider" >
+
+  </section>
 </main>
 <canvas class="background"></canvas><!-- SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuIQ== -->
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script><script  src="./assets/js/script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script><script  src="../assets/js/script.js"></script>
 <!-- Pie de pagina -->
       <!-- seccion de contaactos  -->
 <section class="slider" id="Contactos" >
@@ -168,57 +203,54 @@
     <!-- end of page footer -->
 
 	<!-- core  -->
-    <script src="./assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="./assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
 
     <!-- bootstrap affix -->
-    <script src="./assets/vendors/bootstrap/bootstrap.affix.js"></script>
+    <script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
 
     <!-- wow.js -->
-    <script src="./assets/vendors/wow/wow.js"></script>
+    <script src="../assets/vendors/wow/wow.js"></script>
     
     <!-- google maps -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
 
     <!-- FoodHut js -->
-    <script src="./assets/js/foodhut.js"></script>
+    <script src="../assets/js/foodhut.js"></script>
   </section>
 
     <!-- SCRIPTS -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const navTab = document.querySelector('.nav-tab');
-      const navDropdown = document.querySelector('.nav-dropdown');
-      const scrollTopBtn = document.querySelector('.scroll-top-btn');
-  
-      navTab.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-  
-        navTab.classList.toggle('active');
-  
-        // Scroll to the dropdown menu
-        if (navTab.classList.contains('active')) {
-          const navDropdownHeight = navDropdown.scrollHeight;
-          window.scrollTo({ top: navDropdownHeight, behavior: 'smooth' });
-        }
+      document.addEventListener('DOMContentLoaded', function() {
+        const navTab = document.querySelector('.nav-tab');
+        const navDropdown = document.querySelector('.nav-dropdown');
+        const scrollTopBtn = document.querySelector('.scroll-top-btn');
+    
+        navTab.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent the default link behavior
+    
+          navTab.classList.toggle('active');
+    
+          // Scroll to the dropdown menu
+          if (navTab.classList.contains('active')) {
+            const navDropdownHeight = navDropdown.scrollHeight;
+            window.scrollTo({ top: navDropdownHeight, behavior: 'smooth' });
+          }
+        });
+    
+        window.addEventListener('scroll', function() {
+          // Show or hide the scroll-to-top button
+          if (window.scrollY > 300) {
+            scrollTopBtn.style.display = 'block';
+          } else {
+            scrollTopBtn.style.display = 'none';
+          }
+        });
       });
-  
-      window.addEventListener('scroll', function() {
-        // Show or hide the scroll-to-top button
-        if (window.scrollY > 300) {
-          scrollTopBtn.style.display = 'block';
-        } else {
-          scrollTopBtn.style.display = 'none';
-        }
-      });
-    });
-  
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
-
-  
-  
+    
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
 </body>
 </html>

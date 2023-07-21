@@ -4,7 +4,7 @@
 session_start();
 error_reporting(0);
 
-$validar = $_SESSION['nombre_usuario'];
+$validar = $_SESSION['correo_admin'];
 
 if( $validar == null || $validar = ''){
 
@@ -132,7 +132,7 @@ require_once ('conexion.php');
 						<i class="zmdi zmdi-power"></i>
 						<div class="mdl-tooltip" for="btn-exit">Cerrar sesion</div>
 					</li>
-					<li class="text-condensedLight noLink" ><small><?php echo $_SESSION['nombre_usuario']; ?></small></li>
+					<li class="text-condensedLight noLink" ><small><?php echo $_SESSION['correo_admin']; ?></small></li>
 					<li class="noLink">
 						<figure>
 							<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
@@ -155,7 +155,7 @@ require_once ('conexion.php');
 				</div>
 				<figcaption class="navLateral-body-cr hide-on-tablet">
 					<span>
-					<?php echo $_SESSION['nombre_usuario']; ?><br>
+					<?php echo $_SESSION['correo_admin']; ?><br>
 						<small></small>
 					</span>
 				</figcaption>

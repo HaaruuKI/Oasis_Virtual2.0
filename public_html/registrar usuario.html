@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Iniciar sesion|Oasis Virtual</title>
+  <title>Registrarse|Oasis Virtual</title>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="sara mazal lessons">
@@ -23,39 +23,104 @@
 
 <link rel="stylesheet" href="./css/estilos 2.css">
 <link rel="stylesheet" href="./css/responsive.css">
+<link rel="stylesheet" href="./css/login.css">
 
 <style>img {aspect-ratio: 2/1; object-fit: fill;}</style>
 
+<style>
+  .nav-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: #03dac6;
+  letter-spacing: 0.1rem;
+  transition: all 0.5s ease;
+  font-size: 3vw;
+}
+
+.nav-4:hover {
+  color: #1e1f26;
+  background: #ff214f;
+  transition: all 0.5s ease;
+}
+
+</style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <sectio class="nav">
   <!-- <span class="m">I</span><span class="m">T</span><span class="m">S</span><span class="m">&nbsp;</span><span class="m">o</span><span class="m">f</span><span class="m">&nbsp;</span><span class="m">T</span><span class="m">E</span><span class="m">C</span><span class="m">H</span><span class="m">N</span><span class="m">O</span><span class="m">L</span><span class="m">O</span><span class="m">G</span><span class="m">I</span><span class="m">E</span><span class="m">S</span> -->
   <!-- <a class="nav-tab" href="#tab-vite"></a><span class="nav-tab-slider"></span> -->
-  <h1>OASIS VIRTUAL</h1>
+  <h1><a href="#registrar"><h1>REGISTRARSE</h1></a></h1>
+  <h1><a href="index.html"><h1>OASIS VIRTUAL</h1></a></h1>
   <h3 class="span loader"><span class="m">TU </span><span class="m">ESCAPE </span><span class="m">DE </span><span class="m">LA </span><span class="m">REALIDAD</span></h3>
   <div class="nav-container">
     <a class="nav-tab" href="#">Menu</a>
     <!-- Agregamos el contenido desplegable -->
     <div class="nav-dropdown">
-      <a class="nav-2 nav-3 " href="iniciar sesion usuario.php">Inicar Sesion</a>
-      <a class="nav-2 nav-3" href="iniciar sesion admin.php">Admin</a>
-      <a class="nav-2 nav-3" href="registrar usuario.php">Registrarse</a>
+      <a class="nav-2 nav-3" href="iniciar sesion usuario.html">Inicar Sesion</a>
+      <a class="nav-2 nav-3" href="registrar usuario.html">Registrarse</a>
     </div>
-      
-    <a class="nav-2" href="home.html">Sobre nosotros</a>
-    <a class="nav-2" href="home.html">Galeria</a>
-    <a class="nav-2" href="#Contactos">Contacto</a>
+          
+    <a class="nav-2" href="index.html">SobreNosotros</a>
+    <a class="nav-4" href="./Lista de juegos/juegos.html">Ver juegos</a>
+    <a class="nav-2" href="index.html">Galeria</a>
+    <a class="nav-tab" href="#Contactos">Contacto</a>
     <button class="scroll-top-btn" onclick="scrollToTop()">
       <i class="fas fa-chevron-up"></i>
     </button>
   </div>
 </sectio>
-<main class="main"> 
-<section class="slider" id="tab-vite">
-    <h1></h1>
-    <h2></h2>
-  </section> 
+<main class="main">
+  <section class="slider" id="registrar" >
+    <h1>REGISTRARSE</h1>
+        <div class="grid">
+          <form action="./CRUD/Guardar usuario.php" method="POST" class="form login" autocomplete="off" >
+      
+            <div class="form__field">
+                  <use xlink:href="#icon-user"></use>
+                </svg><span class="hidden">Usuario</span></label>
+              <input autocomplete="username" id="login__username" type="text" name="nombre_usuario" class="form__input" placeholder="Usuario" required>
+            </div>
+            <div class="form__field">
+                  <use xlink:href="#icon-user"></use>
+                </svg><span class="hidden">Correo</span></label>
+              <input style="width: 50px; height: 50px; background-color: #3b4148; padding-left: 15px;" id="login__username" type="email" name="correo_usuario" class="form__input" placeholder="Correo" required>
+            </div>
+      
+            <div class="form__field">
+                  <use xlink:href="#icon-lock"></use>
+                </svg><span class="hidden">Contraseña</span></label>
+              <input id="login__password" type="password" name="contraseña_usuario" class="form__input" placeholder="Contraseña" required>
+            </div>
+            <div class="form__field">
+                </svg><span class="hidden">Pais</span></label>
+              <input id="login__password" type="text" name="pais_usuario" class="form__input" placeholder="Pais" required>
+            </div> 
+            <div class="form__field">
+              <input type="submit" value="Iniciar">
+            </div>
+      
+          </form>
+      
+          <p class="text--center">Ya estas registrado? <a href="iniciar sesion usuario.html">iniciar sesion ahora</a> <svg class="icon">
+              <use xlink:href="#icon-arrow-right"></use>
+            </svg></p>
+      
+        </div>
+      
+        <svg xmlns="http://www.w3.org/2000/svg" class="icons">
+          <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
+            <path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z" />
+          </symbol>
+        </svg>
+        
+    </section> 
+    <section class="slider" id="tab-vite">
+        <h1></h1>
+        <h2></h2>
+      </section> 
 </main>
 <canvas class="background"></canvas><!-- SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuIQ== -->
 <!-- partial -->
@@ -121,39 +186,36 @@
 
     <!-- SCRIPTS -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const navTab = document.querySelector('.nav-tab');
-      const navDropdown = document.querySelector('.nav-dropdown');
-      const scrollTopBtn = document.querySelector('.scroll-top-btn');
-  
-      navTab.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-  
-        navTab.classList.toggle('active');
-  
-        // Scroll to the dropdown menu
-        if (navTab.classList.contains('active')) {
-          const navDropdownHeight = navDropdown.scrollHeight;
-          window.scrollTo({ top: navDropdownHeight, behavior: 'smooth' });
-        }
+      document.addEventListener('DOMContentLoaded', function() {
+        const navTab = document.querySelector('.nav-tab');
+        const navDropdown = document.querySelector('.nav-dropdown');
+        const scrollTopBtn = document.querySelector('.scroll-top-btn');
+    
+        navTab.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent the default link behavior
+    
+          navTab.classList.toggle('active');
+    
+          // Scroll to the dropdown menu
+          if (navTab.classList.contains('active')) {
+            const navDropdownHeight = navDropdown.scrollHeight;
+            window.scrollTo({ top: navDropdownHeight, behavior: 'smooth' });
+          }
+        });
+    
+        window.addEventListener('scroll', function() {
+          // Show or hide the scroll-to-top button
+          if (window.scrollY > 300) {
+            scrollTopBtn.style.display = 'block';
+          } else {
+            scrollTopBtn.style.display = 'none';
+          }
+        });
       });
-  
-      window.addEventListener('scroll', function() {
-        // Show or hide the scroll-to-top button
-        if (window.scrollY > 300) {
-          scrollTopBtn.style.display = 'block';
-        } else {
-          scrollTopBtn.style.display = 'none';
-        }
-      });
-    });
-  
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
-
-  
-  
+    
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
 </body>
 </html>
