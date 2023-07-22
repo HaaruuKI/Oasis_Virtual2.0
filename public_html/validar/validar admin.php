@@ -1,5 +1,5 @@
 <?php
-require_once ("../conexion.php");
+include ('../conexiones/conexion.php');
 if (isset($_POST['accion'])){ 
     switch ($_POST['accion']){
         //casos de registros
@@ -18,9 +18,9 @@ function acceso_admin() {
     session_start();
     $_SESSION['correo_admin']=$correo_admin;
 
-    $conexion=mysqli_connect("localhost","root","","oasis_virtual2.0");
+    include ('../conexiones/conexion.php');
     $consulta= "SELECT * FROM administrador WHERE correo_admin='$correo_admin' AND contraseña_admin='$contraseña_admin'";
-    $resultado=mysqli_query($conexion, $consulta);
+    $resultado=mysqli_query($mysqli, $consulta);
     $filas=mysqli_fetch_array($resultado);
 
 

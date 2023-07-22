@@ -6,15 +6,14 @@ error_reporting(0);
 $validar = $_SESSION['correo_admin'];
 if( $validar == null || $validar = ''){
 
-  header("Location: ./iniciar sesion usuario.html");
-  die();
-  
+	header("Location: ../administrador/admin.html");
+	die();
 }
 
 
 ?>
 <?php
-require_once ('conexion.php');
+include ('../conexiones/conexion.php');
 
 
 ?>
@@ -478,7 +477,7 @@ require_once ('conexion.php');
 										</div>
 									</div>
 									<p class="text-center">
-										<button name="submit" id="submit class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addProduct">
+										<button name="submit" id="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addProduct">
 											<i class="zmdi zmdi-plus"></i>
 										</button>
 										<div class="mdl-tooltip" for="btn-addProduct">Agregar Producto</div>
@@ -503,17 +502,9 @@ require_once ('conexion.php');
 								</div>
 							</div>
 						</form>
-						<!-- <nav class="full-width menu-categories">
-							<ul class="list-unstyle text-center">
-								<li><a href="#!">Category 1</a></li>
-								<li><a href="#!">Category 2</a></li>
-								<li><a href="#!">Category 3</a></li>
-								<li><a href="#!">Category 4</a></li>
-							</ul>
-						</nav> -->
 						<div class="table-responsive" >	
 <?php 
-	include('conexion.php');
+include ('../conexiones/conexion.php');
 	$query = "SELECT * FROM juegos";
 	$resultado = mysqli_query($mysqli,$query);
 

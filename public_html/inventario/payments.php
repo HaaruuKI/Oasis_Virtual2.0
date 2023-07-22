@@ -6,15 +6,14 @@ error_reporting(0);
 $validar = $_SESSION['correo_admin'];
 if( $validar == null || $validar = ''){
 
-  header("Location: ./iniciar sesion usuario.html");
-  die();
-  
+	header("Location: ../administrador/admin.html");
+	die();
 }
 
 
 ?>
 <?php
-require_once ('conexion.php');
+include ('../conexiones/conexion.php');
 
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-include('../conexion.php');
+include ('../conexiones/conexion.php');
 
 // Obtener las imágenes de la base de datos
 $sql = "SELECT id_juego, imagen, plataforma, nombre_juego, descripcion FROM juegos ORDER BY plataforma";

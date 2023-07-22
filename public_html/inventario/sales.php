@@ -6,15 +6,14 @@ error_reporting(0);
 $validar = $_SESSION['correo_admin'];
 if( $validar == null || $validar = ''){
 
-  header("Location: ./iniciar sesion usuario.html");
-  die();
-  
+	header("Location: ../administrador/admin.html");
+	die();
 }
 
 
 ?>
 <?php
-require_once ('conexion.php');
+include ('../conexiones/conexion.php');
 
 
 ?>
@@ -316,11 +315,11 @@ require_once ('conexion.php');
 							<tbody>
 <?php
 // Conexión a la base de datos
-$conexion = mysqli_connect('localhost', 'root', '', 'oasis_virtual2.0');
+include ('../conexiones/conexion.php');
 
 // Consulta para obtener los datos de la tabla
 $consulta = "SELECT * FROM ventas";
-$result = mysqli_query($conexion, $consulta);
+$result = mysqli_query($mysqli, $consulta);
                 
 // Ejemplo de generación de filas
 while ($fila = mysqli_fetch_assoc($result)) {

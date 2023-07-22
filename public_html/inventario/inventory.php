@@ -6,15 +6,14 @@ error_reporting(0);
 $validar = $_SESSION['correo_admin'];
 if( $validar == null || $validar = ''){
 
-  header("Location: ./iniciar sesion usuario.html");
-  die();
-  
+	header("Location: ../administrador/admin.html");
+	die();
 }
 
 
 ?>
 <?php
-require_once ('conexion.php');
+include ('../conexiones/conexion.php');
 
 
 ?>
@@ -340,13 +339,13 @@ require_once ('conexion.php');
 							<tbody>
 <?php
 // Conexión a la base de datos
-$conexion = mysqli_connect('localhost', 'root', '', 'oasis_virtual2.0');
+include ('../conexiones/conexion.php');
 
 // Consulta para obtener los datos de la tabla
 $consulta = "SELECT inventario.id_inventario, inventario.id_juego, juegos.nombre_juego, inventario.cantidad 
 FROM inventario 
 INNER JOIN juegos ON inventario.id_juego = juegos.id_juego;";
-$result = mysqli_query($conexion, $consulta);
+$result = mysqli_query($mysqli, $consulta);
 ?>
                 
 <?php
@@ -360,7 +359,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["nombre_juego"] . "</td>";
         echo "<td>" . $row["cantidad"] . "</td>";
 		echo "<td>";
-		echo "<a style=' color: #337ab7 ;' href='/oasis_virtual/public_html/CRUD/Modificar inventario.php?id=". $row["id_inventario"] . "' >Editar</a>";
+		echo "<a style=' color: #337ab7 ;' href='../CRUD/Modificar inventario.php?id=". $row["id_inventario"] . "' >Editar</a>";
 		echo "<a style=' color: #337ab7 ;' class='cursor' onclick='mostrarConfirmacion(". $row["id_inventario"] . ")'>Borrar</a>";
 		echo "</td>";
 		echo "</tr>";
@@ -391,7 +390,7 @@ if ($result->num_rows > 0) {
 
         function borrarFila() {
             var id = window.idBorrar;
-            window.location.href = "/oasis_virtual/public_html/CRUD/Borrar inventario.php?id=" + id;
+            window.location.href = "../CRUD/Borrar inventario.php?id=" + id;
         }
 
         function cancelarBorrado() {

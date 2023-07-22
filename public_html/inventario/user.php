@@ -6,15 +6,14 @@ error_reporting(0);
 $validar = $_SESSION['correo_admin'];
 if( $validar == null || $validar = ''){
 
-  header("Location: ./iniciar sesion usuario.html");
-  die();
-  
+	header("Location: ../administrador/admin.html");
+	die();
 }
 
 
 ?>
 <?php
-require_once ('conexion.php');
+include ('../conexiones/conexion.php');
 
 
 ?>
@@ -71,7 +70,7 @@ require_once ('conexion.php');
         function confirmarBorrado(id) {
             var confirmacion = confirm("¿Estás seguro de que deseas borrar esta fila?");
             if (confirmacion) {
-                window.location.href = "/oasis_virtual/public_html/CRUD/Borrar Proveedor.php?id=" + id;
+                window.location.href = "../CRUD/Borrar Proveedor.php?id=" + id;
             }
         }
     </script>
@@ -355,7 +354,7 @@ require_once ('conexion.php');
 							<tbody>
 <?php
 // Conexión a la base de datos
-$conexion = mysqli_connect('localhost', 'root', '', 'oasis_virtual2.0');
+include ('../conexiones/conexion.php');
 
 // Consulta para obtener los datos de la tabla
 $consulta = "SELECT * FROM usuario";
@@ -377,7 +376,7 @@ while ($fila = mysqli_fetch_assoc($result)) {
 									<td><?php echo $contraseña; ?></td>		
 									<td>
 										<ul>
-											<li><a style=" color: #337ab7 ; " href="/oasis_virtual/public_html/CRUD/Modificar usuario.php?id=<?php echo $id; ?>" >Editar</a>
+											<li><a style=" color: #337ab7 ; " href="../CRUD/Modificar usuario.php?id=<?php echo $id; ?>" >Editar</a>
 												<a style=" color: #337ab7 ; " class="cursor" onclick="mostrarConfirmacion(<?php echo $id; ?>)">Borrar</a>
 											</li>
 										</ul>
@@ -409,7 +408,7 @@ while ($fila = mysqli_fetch_assoc($result)) {
 
         function borrarFila() {
             var id = window.idBorrar;
-            window.location.href = "/oasis_virtual/public_html/CRUD/Borrar usuario.php?id=" + id;
+            window.location.href = "../CRUD/Borrar usuario.php?id=" + id;
         }
 
         function cancelarBorrado() {

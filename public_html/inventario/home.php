@@ -8,15 +8,14 @@ $validar = $_SESSION['correo_admin'];
 
 if( $validar == null || $validar = ''){
 
-  header("Location: ../iniciar sesion usuario.html");
-  die();
-  
+	header("Location: ../administrador/admin.html");
+	die();
 }
 
 
 ?>
 <?php
-require_once ('conexion.php');
+include('../conexiones/conexion.php');
 
 
 ?>
@@ -300,8 +299,8 @@ require_once ('conexion.php');
 			<h3 class="text-center tittles">ADMINISTRAR</h3>
 			<!-- Titulos -->
 <?php
-// Crear una nueva conexión
-require 'conexion.php';
+// conexión
+include ('../conexiones/conexion.php');
 //cuenta de las tablas
 $tabla_A = "administrador";
 $tabla_U = "usuario";
