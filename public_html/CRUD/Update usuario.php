@@ -1,6 +1,6 @@
 <?php
 	
-	require 'conexion.php';
+	include('../conexiones/conexion.php');
 	
 	$id_usuario = $_POST['id_usuario'];
 	$nombre_usuario = $_POST['nombre_usuario'];

@@ -1,6 +1,6 @@
 <?php
 	
-	require 'Modificar inventario.php';
+	include('../conexiones/conexion.php');
 	$resultado = $mysqli->query($sql);
 
 	

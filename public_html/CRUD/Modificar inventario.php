@@ -1,17 +1,10 @@
-
 <?php
-// Configuración de la conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "oasis_virtual2.0";
-
 // Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+include('../conexiones/conexion.php');
 
 // Verificar la conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+if ($mysqli->connect_error) {
+    die("Error de conexión: " . $mysqli->connect_error);
 }
 
 // Verificar si se envió un formulario para guardar modificaciones
@@ -25,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Actualizar los registros en la base de datos
     for ($i = 0; $i < count($id_inventario); $i++) {
         $sql = "UPDATE inventario SET id_juego = '".$id_juego[$i]."', cantidad = '".$cantidad[$i]."' WHERE id_inventario = '".$id_inventario[$i]."'";
-        $conn->query($sql);
+        $mysqli->query($sql);
 		$resultado = $mysqli->query($sql);
 
     }
@@ -35,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if (isset($_GET['id'])) {
     $edit_id = $_GET['id'];
     $sql = "SELECT inventario.id_inventario, inventario.id_juego, juegos.nombre_juego, inventario.cantidad FROM inventario JOIN juegos ON inventario.id_juego = juegos.id_juego WHERE inventario.id_inventario = '".$edit_id."'";
-    $result = $conn->query($sql);
+    $result = $mysqli->query($sql);
 
     // Mostrar los datos en inputs de HTML para editar
     if ($result->num_rows > 0) {
@@ -49,7 +42,7 @@ if (isset($_GET['id'])) {
 }
 
 // Cerrar conexión
-$conn->close();
+$mysqli->close();
 ?>
 <html lang="es">
 	<head>

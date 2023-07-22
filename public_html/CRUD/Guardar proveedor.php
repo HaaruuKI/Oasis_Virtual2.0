@@ -1,6 +1,6 @@
 <?php
 	
-	require 'conexion.php';
+	include('../conexiones/conexion.php');
 	
 	$nombre_pro = $_POST['nombre_pro'];
 	$apellido_pro = $_POST['apellido_pro'];

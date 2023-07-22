@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-$conexion = mysqli_connect('localhost', 'root', '', 'oasis_virtual2.0');
+include('../conexiones/conexion.php');
 
 // Verificar si se recibió el parámetro "id" en la URL
 if (isset($_GET['id'])) {
@@ -8,10 +8,10 @@ if (isset($_GET['id'])) {
 
     // Consulta para eliminar la fila con el ID especificado
     $consulta = "DELETE FROM juegos WHERE id_juego = $id";
-    $result = mysqli_query($conexion, $consulta);
+    $result = mysqli_query($mysqli, $consulta);
 
 	$consulta = "DELETE FROM inventario WHERE id_juego = $id";
-    $result = mysqli_query($conexion, $consulta);
+    $result = mysqli_query($mysqli, $consulta);
 
 
     
@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
 
 
 // Cerrando la conexión a la base de datos
-mysqli_close($conexion);
+mysqli_close($mysqli);
 
 ?>
 <html lang="es">

@@ -1,17 +1,10 @@
 <?php
-	
-// Configuración de la base de datos
-$host = "localhost";
-$usuario = "root";
-$contrasena = "";
-$base_datos = "oasis_virtual2.0";
-
 // Conexión a la base de datos
-$conexion = new mysqli($host, $usuario, $contrasena, $base_datos);
+include('../conexiones/conexion.php');
 
 // Verificar la conexión
-if ($conexion->connect_error) {
-    die("Error de conexión a la base de datos: " . $conexion->connect_error);
+if ($mysqli->connect_error) {
+    die("Error de conexión a la base de datos: " . $mysqli->connect_error);
 }
 
 
@@ -24,23 +17,23 @@ if ($conexion->connect_error) {
 // Preparar la consulta de inserción
 $sql = "INSERT INTO inventario (id_inventario, id_juego, nombre_juego, cantidad)
         VALUES ('$id_inventario', '$id_juego', '$nombre_juego', '$cantidad')";
-$resultado = ($conexion->query($sql) === TRUE);
+$resultado = ($mysqli->query($sql) === TRUE);
 // Ejecutar la consulta de inserción
-if ($conexion->query($sql) === TRUE) {
+if ($mysqli->query($sql) === TRUE) {
     
 } else {
-    echo "Error al agregar el juego: " . $conexion->error;
+    echo "Error al agregar el juego: " . $mysqli->error;
 }
  // Insertar los datos en la tabla juegos
 $sql_juegos = "INSERT INTO juegos (id_juego, nombre_juego) VALUES ('$id_juego', '$nombre_juego')";
-if ($conexion->query($sql) === TRUE) {
+if ($mysqli->query($sql) === TRUE) {
 	echo "Los datos se insertaron correctamente en la tabla juegos.";
 } else {
-	echo "Error al insertar datos en la tabla juegos: " . $conexion->error;
+	echo "Error al insertar datos en la tabla juegos: " . $mysqli->error;
 }
 
 // Cerrar la conexión a la base de datos
-$conexion->close();
+$mysqli->close();
 ?>
 
 <html lang="es">

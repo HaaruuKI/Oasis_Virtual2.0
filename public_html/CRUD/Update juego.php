@@ -1,5 +1,5 @@
 <?php
-	include('conexion.php');
+include('../conexiones/conexion.php');
 	
 	
 	$id_juego = $_POST['id_juego'];

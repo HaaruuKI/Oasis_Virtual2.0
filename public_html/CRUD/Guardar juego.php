@@ -1,5 +1,5 @@
 <?php
-require_once('conexion.php');
+include('../conexiones/conexion.php');
 
 $nombre_juego = $_POST['nombre_juego'];
 $descripcion = $_POST['descripcion'];
@@ -33,7 +33,7 @@ if(isset($_REQUEST['submit'])){
 }
 
 // Cerrar la conexión a la base de datos
-$conexion->close();
+$mysqli->close();
 ?>
 
 <html lang="es">

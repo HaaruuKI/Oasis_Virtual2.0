@@ -1,17 +1,10 @@
 <?php
-	
-// Configuración de la base de datos
-$host = "localhost";
-$usuario = "root";
-$contrasena = "";
-$base_datos = "oasis_virtual2.0";
-
 // Conexión a la base de datos
-$conexion = new mysqli($host, $usuario, $contrasena, $base_datos);
+include('../conexiones/conexion.php');
 
 // Verificar la conexión
-if ($conexion->connect_error) {
-    die("Error de conexión a la base de datos: " . $conexion->connect_error);
+if ($mysqli->connect_error) {
+    die("Error de conexión a la base de datos: " . $mysqli->connect_error);
 }
 
 // Obtener los valores del formulario
@@ -24,11 +17,11 @@ $rol = 1;
 // Preparar la consulta de inserción
 $sql = "INSERT INTO usuario (nombre_usuario, pais_usuario, correo_usuario, contraseña_usuario, rol)
         VALUES ('$nombre_usuario', '$pais_usuario', '$correo_usuario', '$contraseña_usuario', '$rol')";
-$resultado = ($conexion->query($sql) === TRUE);
+$resultado = ($mysqli->query($sql) === TRUE);
 // Ejecutar la consulta de inserción
 
 // Ejecutar la consulta de inserción
-if ($conexion->query($sql) === TRUE) {
+if ($mysqli->query($sql) === TRUE) {
     // Registro exitoso, redirigir a la página de éxito después de 5 segundos
     echo '<script>
             setTimeout(function() {
@@ -42,11 +35,11 @@ if ($conexion->query($sql) === TRUE) {
                 window.location.href = "../registrar usuario.html";
             }, 3000);
           </script>';
-    echo "Error al agregar el juego: " . $conexion->error;
+    echo "Error al agregar el juego: " . $mysqli->error;
 }
 
 // Cerrar la conexión a la base de datos
-$conexion->close();
+$mysqli->close();
 ?>
 
 <html lang="es">
