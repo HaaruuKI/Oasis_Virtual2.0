@@ -342,9 +342,11 @@ include ('../conexiones/conexion.php');
 include ('../conexiones/conexion.php');
 
 // Consulta para obtener los datos de la tabla
-$consulta = "SELECT inventario.id_inventario, inventario.id_juego, juegos.nombre_juego, inventario.cantidad 
+$consulta = "SELECT inventario.id_inventario, inventario.id_juego, juegos.nombre_juego, COUNT(*) AS total_cantidad
 FROM inventario 
-INNER JOIN juegos ON inventario.id_juego = juegos.id_juego;";
+LEFT JOIN juegos ON inventario.id_juego = juegos.id_juego
+GROUP BY juegos.nombre_juego;";
+
 $result = mysqli_query($mysqli, $consulta);
 ?>
                 
@@ -357,7 +359,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["id_inventario"] . "</td>";
         echo "<td>" . $row["id_juego"] . "</td>";
         echo "<td>" . $row["nombre_juego"] . "</td>";
-        echo "<td>" . $row["cantidad"] . "</td>";
+        echo "<td>" . $row["total_cantidad"] . "</td>"; // Display total_cantidad instead of cantidad
 		echo "<td>";
 		echo "<a style=' color: #337ab7 ;' href='../CRUD/Modificar inventario.php?id=". $row["id_inventario"] . "' >Editar</a>";
 		echo "<a style=' color: #337ab7 ;' class='cursor' onclick='mostrarConfirmacion(". $row["id_inventario"] . ")'>Borrar</a>";

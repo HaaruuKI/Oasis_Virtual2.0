@@ -39,7 +39,7 @@ $id = $_GET['id'];
 	<body>
 		<div class="container">
 			<div class="row">
-				<h3 style="text-align:center">MODIFICAR PROVEEDOR</h3>
+				<h3 style="text-align:center">MODIFICAR JUEGO</h3>
 			</div>
 			
 			<form class="form-horizontal" method="POST" action="Update juego.php" autocomplete="off" enctype="multipart/form-data">
@@ -62,6 +62,13 @@ $id = $_GET['id'];
 				<div class="form-group">
 					<label for="empresa" class="col-sm-2 control-label">Plataforma</label>
 					<div class="col-sm-10">
+					<select name="plataforma" class="mdl-textfield__input">
+						<option value="" disabled="" selected="">Seleccionar plataforma</option>
+						<option value="Steam">Steam</option>
+						<option value="Epicgames">Epicgames</option>
+						<option value="Ubisoft">Ubisoft</option>
+						<option value="EA">EA</option>
+					</select>
 						<input type="text" class="form-control" id="plataforma" name="plataforma" placeholder="Plataforma" value="<?php echo $row['plataforma']; ?>" required>
 					</div>
 				</div>
@@ -141,18 +148,6 @@ $id = $_GET['id'];
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="correo" class="col-sm-2 control-label">descuento</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="descuento" name="descuento" placeholder="Descueto" value="<?php echo $row['descuento']; ?>" required>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="correo" class="col-sm-2 control-label">Cantidad</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" value="<?php echo $row['cantidad']; ?>" required>
-					</div>
-				</div>
-				<div class="form-group">
 					<label for="correo" class="col-sm-2 control-label">Fecha de creacion</label>
 					<div class="col-sm-10">
 						<input type="date" class="form-control" id="fecha_creacion" name="fecha_creacion" placeholder="Fecha de creacion" value="<?php echo $row['fecha_creacion']; ?>" required>
@@ -173,7 +168,7 @@ $id = $_GET['id'];
 				<div class="form-group">
 					<label for="correo" class="col-sm-2 control-label">Cambiar imagen</label>
 					<div class="col-sm-10">
-						<input type="file"  id="imagen" name="imagen"  required>
+						<input type="file"  id="imagen" name="imagen"  >
 					</div>
 				</div> 
 				<div class="form-group">

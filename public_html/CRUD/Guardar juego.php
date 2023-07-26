@@ -7,9 +7,8 @@ $plataforma = $_POST['plataforma'];
 $genero = $_POST['genero'];
 $desarrollador = $_POST['desarrollador'];
 $precio = $_POST['precio'];
-$descuento = $_POST['descuento'];
-$cantidad = $_POST['cantidad'];
 $fecha_creacion = $_POST['fecha_creacion'];
+$clave = $_POST['clave'];
 
 $genero = implode(",", $genero);
 
@@ -21,14 +20,25 @@ if(isset($_REQUEST['submit'])){
     
     move_uploaded_file($temporal,$carpeta.'/'. $nombre_imagen);
 
-    $query="INSERT INTO juegos (nombre_juego, descripcion,plataforma, genero, desarrollador, precio, descuento, cantidad, fecha_creacion, imagen) 
-    VALUES('$nombre_juego', '$descripcion', '$plataforma', '$genero', '$desarrollador', '$precio', '$descuento', '$cantidad', '$fecha_creacion','$ruta')";
+    $query="INSERT INTO juegos (nombre_juego, descripcion,plataforma, genero, desarrollador, precio, fecha_creacion, imagen, clave) 
+    VALUES('$nombre_juego', '$descripcion', '$plataforma', '$genero', '$desarrollador', '$precio', '$fecha_creacion','$ruta','$clave')";
     $execute = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 
-    if($execute){
-        header("Location: ../inventario/products.php");
-    }else{
-        echo "hubo un error"; 
+	if ($execute) {
+        // Obtener el "id_juego" recién insertado
+        $id_juego = mysqli_insert_id($mysqli);
+
+        // Insertar el juego en la tabla "inventario"
+        $query_inventario = "INSERT INTO inventario (id_juego) VALUES ('$id_juego')";
+        $execute_inventario = mysqli_query($mysqli, $query_inventario) or die(mysqli_error($mysqli));
+
+        if ($execute_inventario) {
+            header("Location: ../inventario/products.php");
+        } else {
+            echo "hubo un error al agregar a inventario";
+        }
+    } else {
+        echo "hubo un error";
     }
 }
 

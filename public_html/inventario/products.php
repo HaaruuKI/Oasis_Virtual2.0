@@ -430,31 +430,23 @@ include ('../conexiones/conexion.php');
 													<input type="checkbox" name="genero[]" value="Novela visual"> Novela visual
 												</label>
 											</div>
-											<h5 class="text-condensedLight">Unidades y Precio</h5>
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="number" name="cantidad" >
-												<label class="mdl-textfield__label" for="StrockProduct">Unidades</label>
-												<span class="mdl-textfield__error">Numero Invalido </span>
-											</div>
+											<h5 class="text-condensedLight">Precio</h5>
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 												<input class="mdl-textfield__input" type="number" name="precio" >
 												<label class="mdl-textfield__label" for="PriceProduct">Precio</label>
 												<span class="mdl-textfield__error">Precio Invalido </span>
 											</div>
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="number"  name="descuento" >
-												<label class="mdl-textfield__label" for="discountProduct">% Decuento</label>
-												<span class="mdl-textfield__error">Decuento Invalido</span>
-											</div>	
 										</div>
 										<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
-											<h5 class="text-condensedLight">Datos de la plataforma y proveedor</h5>
+											<h5 class="text-condensedLight">Datos de la plataforma y Desarrollador</h5>
 										
 											<div class="mdl-textfield mdl-js-textfield">
 												<select name="plataforma" class="mdl-textfield__input">
 													<option value="" disabled="" selected="">Seleccionar plataforma</option>
 													<option value="Steam">Steam</option>
 													<option value="Epicgames">Epicgames</option>
+													<option value="Ubisoft">Ubisoft</option>
+													<option value="EA">EA</option>
 												</select>
 											</div>
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -462,14 +454,14 @@ include ('../conexiones/conexion.php');
 												<label class="mdl-textfield__label" for="markProduct">Desarrollador</label>
 												<span class="mdl-textfield__error">Desarrollador Invalido</span>
 											</div>
-											<h5 class="text-condensedLight">Fecha de creacion del juego</h5>
+											<h5 class="text-condensedLight">Fecha de creacion del juego y clave</h5>
 											<div class="mdl-textfield mdl-js-textfield">
 												<input type="date" class="mdl-textfield__input" name="fecha_creacion" >
 											</div>
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text" name="desarrollador" >
+												<input class="mdl-textfield__input" type="text" name="clave" >
 												<label class="mdl-textfield__label" for="markProduct">Clave-Serial</label>
-												<span class="mdl-textfield__error">Desarrollador Invalido</span>
+												<span class="mdl-textfield__error">Clave invalida</span>
 											</div>
 											<div class="mdl-textfield mdl-js-textfield">
 												<input type="file" name="imagen" id="imagen"  >
@@ -520,7 +512,6 @@ include ('../conexiones/conexion.php');
 	</div>
 	<div class="mdl-card__supporting-text">
 	<input type="hidden" <?php echo $id ; ?>>
-		<small>Cantidad <br><?php echo $row['cantidad']; ?></small><br>
 		<small>Genero <br> <?php echo $row['genero']; ?></small>
 	</div>
 	<div class="mdl-card__actions ">
