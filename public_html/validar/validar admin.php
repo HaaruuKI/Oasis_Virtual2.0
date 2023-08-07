@@ -24,7 +24,7 @@ function acceso_admin() {
     $filas=mysqli_fetch_array($resultado);
 
 
-    if($filas['rol'] == 1){ //usuario
+    if($filas['rol'] == 3){ //lector
 
         header('Location: ../inventario/home.php');
 

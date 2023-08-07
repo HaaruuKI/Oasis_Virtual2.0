@@ -76,27 +76,25 @@
   <section class="slider" id="registrar" >
     <h1>REGISTRARSE</h1>
         <div class="grid">
-          <form action="./CRUD/Guardar usuario.php" method="POST" class="form login" autocomplete="off" >
+          <form action="./CRUD/Guardar usuario.php" method="POST" class="form login" autocomplete="off">
       
+            <div class="form__field">
+            </svg><span class="hidden">Usuario</span></label>
+          <input  type="text" name="nombre_usuario" class="form__input" placeholder="Usuario" required>
+        </div>
             <div class="form__field">
                   <use xlink:href="#icon-user"></use>
                 </svg><span class="hidden">Usuario</span></label>
-              <input autocomplete="username" id="login__username" type="text" name="nombre_usuario" class="form__input" placeholder="Usuario" required>
-            </div>
-            <div class="form__field">
-                  <use xlink:href="#icon-user"></use>
-                </svg><span class="hidden">Correo</span></label>
-              <input style="width: 50px; height: 50px; background-color: #3b4148; padding-left: 15px;" id="login__username" type="email" name="correo_usuario" class="form__input" placeholder="Correo" required>
+              <input autocomplete="username"style="width: 50px; height: 50px; background-color: #3b4148; padding-left: 15px;" type="email" name="correo_usuario" class="form__input" placeholder="Correo" required>
             </div>
       
             <div class="form__field">
-                  <use xlink:href="#icon-lock"></use>
                 </svg><span class="hidden">Contraseña</span></label>
-              <input id="login__password" type="password" name="contraseña_usuario" class="form__input" placeholder="Contraseña" required>
+              <input type="password" name="contraseña_usuario" placeholder="Contraseña" required>
             </div>
             <div class="form__field">
                 </svg><span class="hidden">Pais</span></label>
-              <input id="login__password" type="text" name="pais_usuario" class="form__input" placeholder="Pais" required>
+              <input type="text" name="pais_usuario"placeholder="Pais" required>
             </div> 
             <div class="form__field">
               <input type="submit" value="Iniciar">

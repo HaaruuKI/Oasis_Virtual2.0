@@ -168,7 +168,7 @@ $id = $_GET['id'];
 				<div class="form-group">
 					<label for="correo" class="col-sm-2 control-label">Cambiar imagen</label>
 					<div class="col-sm-10">
-						<input type="file"  id="imagen" name="imagen"  >
+						<input type="file"  id="imagen" name="imagen">
 					</div>
 				</div> 
 				<div class="form-group">

@@ -1,21 +1,19 @@
 <?php
+session_start();
+error_reporting(0);
+
+$validar = $_SESSION['correo_usuario'];
+
+if( $validar == null || $validar = ''){
+	header("Location: juegos-invitado.html");
+	die();
+}
 include('../conexiones/conexion.php');
 
-$id = $_GET['id'];
+  $sql = "SELECT * FROM usuario";
+  $resultado=mysqli_query($mysqli, $sql);
+  $filas=mysqli_fetch_array($resultado);
 
-	$sql = "SELECT * FROM juegos WHERE id_juego = '$id'";
-	$resultado = $mysqli->query($sql);
-	$row = $resultado->fetch_array(MYSQLI_ASSOC);
-
-  $sql2 = "SELECT * FROM detalle_juego";
-  $resultado2 = $mysqli->query($sql2);
-	$row2 = $resultado2->fetch_array(MYSQLI_ASSOC);
-
-
-  $sql3 = "INSERT INTO detalle_juego (valoracion, region)
-  VALUE()";
-  $resultado3 = $mysqli->query($sql3);
-	$row3 = $resultado2->fetch_array(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -36,11 +34,13 @@ $id = $_GET['id'];
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="../assets/css/nav y fondo.css">
-
+ 
   <!-- Bootstrap + FoodHut main styles -->
-<link rel="stylesheet" href="../assets/css/oasis.css">
+	<link rel="stylesheet" href="../assets/css/oasis.css">
+
+<link rel="stylesheet" href=".,/assets/css/estilos 2.css">
 <link rel="stylesheet" href="../assets/css/responsive.css">
-<link rel="stylesheet" href="detalles.css">
+
 <style>img {aspect-ratio: 2/1; object-fit: fill;}</style>
 
 <style>
@@ -52,7 +52,7 @@ $id = $_GET['id'];
   color: #03dac6;
   letter-spacing: 0.1rem;
   transition: all 0.5s ease;
-  font-size: 3.5vw;
+  font-size: 4vw;
 }
 
 .nav-4:hover {
@@ -71,78 +71,150 @@ $id = $_GET['id'];
         margin-right: 10px;
     }
 </style>
+<script>
+  function mostrarMasContenido() {
+    var elemento = document.getElementById("contenido-oculto");
+    elemento.style.display = "block";
+  }
+</script>
+
+<link rel="stylesheet" href="../assets/css/estilo juegos.css">
+<link rel="stylesheet" href="juegos.css ">
+
+<script src="../validar/mostrar sesion.js"></script>
 </head>
 <body>
-<!-- partial:index.partial.html -->
 <section class="nav">
   <!-- <span class="m">I</span><span class="m">T</span><span class="m">S</span><span class="m">&nbsp;</span><span class="m">o</span><span class="m">f</span><span class="m">&nbsp;</span><span class="m">T</span><span class="m">E</span><span class="m">C</span><span class="m">H</span><span class="m">N</span><span class="m">O</span><span class="m">L</span><span class="m">O</span><span class="m">G</span><span class="m">I</span><span class="m">E</span><span class="m">S</span> -->
   <!-- <a class="nav-tab" href="#tab-vite"></a><span class="nav-tab-slider"></span> -->
-  <h1><a href="#juegos"><h1>DESCRIPCION</h1></a></h1>
+  <h1><a href="#juegos"><h1>JUEGOS</h1></a></h1>
   <h1><a href="../index.html"><h1>OASIS VIRTUAL</h1></a></h1>
   <h3 class="span loader"><span class="m">TU </span><span class="m">ESCAPE </span><span class="m">DE </span><span class="m">LA </span><span class="m">REALIDAD</span></h3>
   <div class="nav-container">
-    <a class="nav-tab" href="#">Menu</a>
-    <!-- Agregamos el contenido desplegable -->
+    <a class="nav-tab" href="#" >☰Perfil</a>
     <div class="nav-dropdown">
-      <a class="nav-2 nav-3" href="../iniciar sesion usuario.html">Inicar Sesion</a>
-      <a class="nav-2 nav-3" href="../registrar usuario.html">Registrarse</a>
+      <a style="font-size: 3vw;" class="nav-2 nav-3">Bienvenido, <?php echo $_SESSION['correo_usuario']; ?></a>
+      <a class="nav-2 nav-3" href="../Perfiles/inicio.php">Perfil</a>
+      <a class="nav-2 nav-3" href="../iniciar sesion usuario.html">Compras</a>
+      <a class="nav-2 nav-3" href="../registrar usuario.html">Libreria de claves</a>
+      <a class="nav-2 nav-3" href="../validar/cerrarSesion.php"">Cerrar Sesion</a>
     </div>
+<!-- <script>  
+  // Mostrar el nombre de usuario almacenado en el LocalStorage
+  var email = localStorage.getItem("email");
+  if (email) {
+    
+    var welcomeMessage = document.getElementById("bienvenida");
+    welcomeMessage.innerHTML = "Bienvenido, " + email + ".";
+  } else {
+    // Si el nombre de usuario no está almacenado, redireccionar al usuario a la página de inicio de sesión
+    window.location.href = "../Lista de juegos/juegos-invitado.html"
+  }
+  
+  // Función para cerrar la sesión
+  function cerrarSesion() {
+    // Limpiar el nombre de usuario del LocalStorage
+    localStorage.removeItem("email");
+    // Redireccionar al usuario a la página de inicio de sesión
+    window.location.href = "../index.html";
+  }
+  </script> -->
+  
     <a class="nav-2" href="../index.html#sobre-nosotros">SobreNosotros</a>
-    <a class="nav-4" href="../Lista de juegos/juegos.html#juegos">Ver juegos</a>
+    <a class="nav-4" href="./juegos.html">Ver juegos</a>
     <a class="nav-2" href="../index.html#galeria">Galeria</a>
-    <a class="nav-tab" href="#Contactos">Contacto</a>
+    <a class="nav-tab" href="#Contactos">Contacto</a>  
     <button class="scroll-top-btn" onclick="scrollToTop()">
       <i class="fas fa-chevron-up"></i>
     </button>
   </div>
 </section>
 <main class="main">
+  <section class="" id="juegos">
+    <div id="gallery">
 
-<section class="slider" id="juegos">
-    <br>
-<div style="background-color: transparent; border: none" class="card">
-  <div class="left">
-  </div>
-  <div style="padding: 0 0px;position: fixed;  position: fixed; bottom: 7%; width: 73%;" class="right"><img style="width: 400px; display: block" class="helmet" src="<?php echo $row['imagen'] ?>" alt="..."/>
-    <div class="productInfo"style="position: relative; left: 46px; top: -36px;">
-      <h1 style="font-size: 2vw; width: 600px; position: relative; left: -256px; top: 15px;"><?php echo $row['nombre_juego'] ?></h1>
-      <h2>$<?php echo $row['precio'] ?></h2>
-      <div class="details">
-        <div class="size">
-          <h4>VALORACION</h4>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-        </form>
-        </div>
-        <div class="durability">
-          <h4>Desarrollador:<a><br><?php echo $row['desarrollador'];?></a></h4>
-          <h4>Plataforma:<a><br><?php echo $row['plataforma'];?></a></h4>
-        </div>
-      </div>
-      <button style="position: relative; left: 0px; top: 5px;" >Agregar al carrito</button><h1><a style="position: relative; top: 0px; left: 0px" href="#descripcion">Descripcion</a></h1>
+    <script>
+        // redirigir a detalles juegos
+        function redirectToPage(pageUrl) {
+            window.location.href = pageUrl;
+        }
+        // redirigir a perfil del usuario
+        function redireccionar(pageUrl) {
+            window.location.href = pageUrl;
+        }
+        
+      
+
+        // Function crear estructura del HTML para los juegos
+        function createGameElement(game) {
+            return `
+            <figure style="width: 400px" class="card" onclick="redirectToPage('../Detalles de juegos/Detalles.php?id=${game.id}#juegos')">
+              <figcaption>${game.nombre_juego}</figcaption>
+              <img src="${game.imagen}" />
+              </figure>
+            `;
+        }
+        
+
+        // Function to generate the game gallery HTML
+        function generateGallery(gamesData) {
+            const galleryContainer = document.getElementById("gallery");
+
+            let currentPlatform = null;
+            let platformHTML = "";
+
+            gamesData.forEach((game) => {
+                if (currentPlatform !== game.plataforma) {
+                    if (currentPlatform !== null) {
+                        platformHTML += '</div>';
+                        galleryContainer.insertAdjacentHTML("beforeend", platformHTML);
+                    }
+
+                    currentPlatform = game.plataforma;
+                    platformHTML = `
+                        <div class="platform">
+                            <h2><strong>${game.plataforma}</strong></h2>
+                            <div class="news">
+                    `;
+                }
+
+                platformHTML += createGameElement(game);
+            });
+
+            if (currentPlatform !== null) {
+                platformHTML += '</div>';
+                galleryContainer.insertAdjacentHTML("beforeend", platformHTML);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "Obtener datos.php");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    generateGallery(data);
+                } else {
+                    console.error("Error fetching game data:", xhr.statusText);
+                }
+            };
+            xhr.onerror = function() {
+                console.error("Error fetching game data.");
+            };
+            xhr.send();
+        });
+    </script>
     </div>
-  </div>
-
-</section>
-<section class="slider" id="descripcion">
-<h1>Descripcion</h1>
-<br>
-  <h4>Fecha creacion<a><br><?php echo $row['fecha_creacion'];?></a></h4>
-  <h4>Genero:<a><br><?php echo $row['genero'];?></a></h4>
-  <br><br>
-  <p><?php echo $row['descripcion'];?></p>
-</section>
-  </main>
+    <section class="slider"></section>
+    
+  </section>
+</main>
 <canvas class="background"></canvas><!-- SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuIQ== -->
 <!-- partial -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script><script  src="../assets/js/script.js"></script>
-
 <!-- Pie de pagina -->
       <!-- seccion de contaactos  -->
-<section class="" id="Contactos" >
+<section class="slider" id="Contactos" >
       <div id="contact" class="container-fluid bg-dark text-light border-top wow fadeIn">
         <div class="row">
             <div class="col-md-6 px-0">
@@ -159,7 +231,7 @@ $id = $_GET['id'];
             </div>
         </div>
     </div>
-<footer>
+
     <!-- pie de pagina  -->
     <div class="container-fluid bg-dark text-light has-height-md middle-items border-top text-center wow fadeIn">
         <div class="row">
@@ -180,7 +252,6 @@ $id = $_GET['id'];
     <div class="bg-dark text-light text-center border-top wow fadeIn">
         <p class="mb-0 py-3 text-muted small">&copy; Copyright <script>document.write(new Date().getFullYear())</script> esta <i class="ti-heart text-danger"></i> hecho por <a href="https://github.com/HaaruuKI" style="color: #ff214f;" >HaaruuKI</a></p>
     </div>
-
     <!-- end of page footer -->
 
 	<!-- core  -->
@@ -192,14 +263,13 @@ $id = $_GET['id'];
 
     <!-- wow.js -->
     <script src="../assets/vendors/wow/wow.js"></script>
-
+    
     <!-- google maps -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
 
     <!-- FoodHut js -->
     <script src="../assets/js/oasis.js"></script>
   </section>
-  </footer>
 
     <!-- SCRIPTS -->
     <script>
@@ -207,19 +277,19 @@ $id = $_GET['id'];
         const navTab = document.querySelector('.nav-tab');
         const navDropdown = document.querySelector('.nav-dropdown');
         const scrollTopBtn = document.querySelector('.scroll-top-btn');
-
+    
         navTab.addEventListener('click', function(event) {
           event.preventDefault(); // Prevent the default link behavior
-
+    
           navTab.classList.toggle('active');
-
+    
           // Scroll to the dropdown menu
           if (navTab.classList.contains('active')) {
             const navDropdownHeight = navDropdown.scrollHeight;
             window.scrollTo({ top: navDropdownHeight, behavior: 'smooth' });
           }
         });
-
+    
         window.addEventListener('scroll', function() {
           // Show or hide the scroll-to-top button
           if (window.scrollY > 300) {
@@ -229,11 +299,10 @@ $id = $_GET['id'];
           }
         });
       });
-
+    
       function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     </script>
-
 </body>
 </html>
