@@ -9,16 +9,11 @@ if( $validar == null || $validar = ''){
 	header("Location: ../administrador/admin.html");
 	die();
 }
-
-
+include('../conexiones/conexion.php');
+$sql = "SELECT * FROM administrador";
+$resultado=mysqli_query($mysqli, $sql);
+$filas=mysqli_fetch_array($resultado);
 ?>
-<?php
-include ('../conexiones/conexion.php');
-
-
-?>
-
-
 <!DOCTYPE html>	
 <html lang="es">
 <head>
@@ -197,7 +192,7 @@ include ('../conexiones/conexion.php');
 				<figcaption class="navLateral-body-cr hide-on-tablet">
 					<span>
 						<?php echo $_SESSION['correo_admin']; ?><br>
-						<small></small>
+						<small><?php echo $filas['nombre_admin']; ?></small>
 					</span>
 				</figcaption>
 			</figure>
@@ -375,6 +370,8 @@ include ('../conexiones/conexion.php');
 												<span class="mdl-textfield__error">Decripcion Invalida</span>
 											</div>
 											<div class="mdl-textfield mdl-js-textfield">
+												<label for="">
+													Genero: <br>
 												<label>
 													<input type="checkbox" name="genero[]" value="Acción"> Acción
 												</label>
@@ -428,6 +425,7 @@ include ('../conexiones/conexion.php');
 												</label>
 												<label>
 													<input type="checkbox" name="genero[]" value="Novela visual"> Novela visual
+												</label>
 												</label>
 											</div>
 											<h5 class="text-condensedLight">Precio</h5>
@@ -513,6 +511,9 @@ include ('../conexiones/conexion.php');
 	<div class="mdl-card__supporting-text">
 	<input type="hidden" <?php echo $id ; ?>>
 		<small>Genero <br> <?php echo $row['genero']; ?></small>
+	</div>
+	<div class="mdl-card__supporting-text">
+		<small>Plataforma:<br> <?php echo $row['plataforma']; ?></small>
 	</div>
 	<div class="mdl-card__actions ">
 	

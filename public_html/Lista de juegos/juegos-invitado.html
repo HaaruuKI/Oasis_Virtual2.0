@@ -102,7 +102,7 @@
         // Function to create the HTML structure for each game
         function createGameElement(game) {
             return `
-            <figure style="width: 400px" class="card" onclick="redirectToPage('../Detalles de juegos/Detalles.php?id=${game.id}#juegos')">
+            <figure style="width: 400px" class="card" onclick="redirectToPage('../Detalles de juegos/Detalles-invitado.php?id=${game.id}#juegos')">
               <figcaption>${game.nombre_juego}</figcaption>
               <img src="${game.imagen}" />
               </figure>

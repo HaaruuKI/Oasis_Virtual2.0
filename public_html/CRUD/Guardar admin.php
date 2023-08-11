@@ -15,10 +15,10 @@ $tel_admin = $_POST['tel_admin'];
 $contraseña_admin = $_POST['contraseña_admin'];
 $pais_admin = $_POST['pais_admin'];
 $direccion_admin = $_POST['direccion_admin'];
-
+$rol = 2;
 // Preparar la consulta de inserción
-$sql = "INSERT INTO administrador (correo_admin, nombre_admin, apellido_admin, tel_admin, contraseña_admin, pais_admin, direccion_admin)
-        VALUES ('$correo_admin', '$nombre_admin', '$apellido_admin', '$tel_admin', '$contraseña_admin', '$pais_admin', '$direccion_admin')";
+$sql = "INSERT INTO administrador (correo_admin, nombre_admin, apellido_admin, tel_admin, contraseña_admin, pais_admin, direccion_admin, rol)
+        VALUES ('$correo_admin', '$nombre_admin', '$apellido_admin', '$tel_admin', '$contraseña_admin', '$pais_admin', '$direccion_admin','$rol')";
 $resultado = ($mysqli->query($sql) === TRUE);
 // Ejecutar la consulta de inserción
 if ($mysqli->query($sql) === TRUE) {
@@ -51,7 +51,7 @@ $mysqli->close();
 						<h3>ERROR AL GUARDAR</h3>
 					<?php } ?>
 					
-					<a href=".. /inventario/admin.php" class="btn btn-primary">Regresar</a>
+					<a href="../inventario/admin.php" class="btn btn-primary">Regresar</a>
 					
 				</div>
 			</div>

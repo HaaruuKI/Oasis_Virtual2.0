@@ -9,15 +9,13 @@ if( $validar == null || $validar = ''){
 	header("Location: ../administrador/admin.html");
 	die();
 }
+include('../conexiones/conexion.php');
+$sql = "SELECT * FROM administrador";
+$resultado=mysqli_query($mysqli, $sql);
+$filas=mysqli_fetch_array($resultado);
 
 
 ?>
-<?php
-include ('../conexiones/conexion.php');
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -184,7 +182,7 @@ include ('../conexiones/conexion.php');
 				<figcaption class="navLateral-body-cr hide-on-tablet">
 					<span>
 						<?php echo $_SESSION['correo_admin']; ?><br>
-						<small></small>
+						<small><?php echo $filas['nombre_admin']; ?></small>
 					</span>
 				</figcaption>
 			</figure>
@@ -345,10 +343,18 @@ include ('../conexiones/conexion.php');
 							<thead>
 								<tr>
 									<th class="mdl-data-table__cell--non-numeric">ID</th>
-									<th>Usuario</th>
-									<th>pais</th>
-									<th>correo</th>
+									<th>Nombre</th>
+									<th>Apellido</th>
+									<th>Fecha de nacimiento</th>
+									<th>Direccion</th>
+									<th>Pais</th>
+									<th>Estado</th>
+									<th>Codigo postal</th>
+									<th>Ciudad</th>
+									<th>Telefono</th>
 									<th>Contraseña</th>
+									<th>Correo</th>
+									<th>Rol</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -358,22 +364,38 @@ include ('../conexiones/conexion.php');
 
 // Consulta para obtener los datos de la tabla
 $consulta = "SELECT * FROM usuario";
-$result = mysqli_query($conexion, $consulta);
+$result = mysqli_query($mysqli, $consulta);
                 
 // Ejemplo de generación de filas
 while ($fila = mysqli_fetch_assoc($result)) {
     $id = $fila['id_usuario'];
     $nombre = $fila['nombre_usuario'];
+    $apellido = $fila['apellido_usuario'];
+    $fecha_nacimiento = $fila['fecha_nacimiento'];
+    $direccion_usuario = $fila['direccion_usuario'];
     $pais = $fila['pais_usuario'];
-    $correo = $fila['correo_usuario'];
+    $estado = $fila['estado_usuario'];
+    $codigo_postal = $fila['codigo_postal'];
+    $ciudad = $fila['ciudad'];
+    $tel = $fila['tel_usuario'];
 	$contraseña = $fila['contraseña_usuario'];
+	$correo = $fila['correo_usuario'];
+	$rol = $fila['rol'];
 ?>
 								<tr>
 									<td class="mdl-data-table__cell--non-numeric"><?php echo $id; ?></td>
 									<td><?php echo $nombre; ?></td>
+									<td><?php echo $apellido; ?></td>
+									<td><?php echo $fecha_nacimiento; ?></td>
+									<td><?php echo $direccion_usuario; ?></td>
 									<td><?php echo $pais; ?></td>
-									<td><?php echo $correo; ?></td>
+									<td><?php echo $estado; ?></td>
+									<td><?php echo $codigo_postal; ?></td>
+									<td><?php echo $ciudad; ?></td>
+									<td><?php echo $tel; ?></td>
 									<td><?php echo $contraseña; ?></td>		
+									<td><?php echo $correo; ?></td>
+									<td><?php echo $rol; ?></td>
 									<td>
 										<ul>
 											<li><a style=" color: #337ab7 ; " href="../CRUD/Modificar usuario.php?id=<?php echo $id; ?>" >Editar</a>

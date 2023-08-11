@@ -190,7 +190,7 @@ include('../conexiones/conexion.php');
           </div> -->
           <div class="pages box">
             <div class="intro-title">
-              Your pages 
+              Your 
               <button class="intro-menu"></button>
             </div>
             <div class="user">
@@ -218,7 +218,7 @@ include('../conexiones/conexion.php');
             <div class="div-padding">
             <span style="margin: end" class="alling">Nombre</span>
             <div class="status-main alling-margin">
-              <input class="status-textarea" placeholder="Nombre">
+              <input class="status-textarea" placeholder="Nombre" value="<?php echo $filas['nombre_usuario']; ?>" >
             </div>
             </div>
             <div class="div-padding">

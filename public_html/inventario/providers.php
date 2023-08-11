@@ -9,16 +9,11 @@ if( $validar == null || $validar = ''){
 	header("Location: ../administrador/admin.html");
 	die();
 }
-
-
+include('../conexiones/conexion.php');
+$sql = "SELECT * FROM administrador";
+$resultado=mysqli_query($mysqli, $sql);
+$filas=mysqli_fetch_array($resultado);
 ?>
-<?php
-include ('../conexiones/conexion.php');
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -195,7 +190,7 @@ include ('../conexiones/conexion.php');
 				<figcaption class="navLateral-body-cr hide-on-tablet">
 					<span>
 						<?php echo $_SESSION['correo_admin']; ?><br>
-						<small></small>
+						<small><?php echo $filas['nombre_admin']; ?></small>
 					</span>
 				</figcaption>
 			</figure>

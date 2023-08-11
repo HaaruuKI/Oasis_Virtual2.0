@@ -34,6 +34,12 @@ $id = $_GET['id'];
     document.getElementById('resultado').value = texto;
     }
 </script>
+<script>
+        const selectElement = document.getElementById('textoSelect');
+        const inputElement = document.getElementById('textoInput');
+
+        selectElement.addEventListener('change', () => inputElement.value = selectElement.value);
+    </script>
 	</head>
 	
 	<body>
@@ -55,7 +61,7 @@ $id = $_GET['id'];
 				<div class="form-group">
 					<label for="apellido" class="col-sm-2 control-label">Descripcion</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion" value="<?php echo $row['descripcion']; ?>" >
+						<textarea rows="10" type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion"><?php echo $row['descripcion']; ?></textarea>
 					</div>
 				</div>
 				
@@ -69,7 +75,7 @@ $id = $_GET['id'];
 						<option value="Ubisoft">Ubisoft</option>
 						<option value="EA">EA</option>
 					</select>
-						<input type="text" class="form-control" id="plataforma" name="plataforma" placeholder="Plataforma" value="<?php echo $row['plataforma']; ?>" required>
+					<input readonly type="text" class="form-control" placeholder="Plataforma" value="<?php echo $row['plataforma']; ?>">
 					</div>
 				</div>
 				<label style="padding-left: 110px;">Genero</label>

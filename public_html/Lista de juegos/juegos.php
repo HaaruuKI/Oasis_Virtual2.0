@@ -71,12 +71,6 @@ include('../conexiones/conexion.php');
         margin-right: 10px;
     }
 </style>
-<script>
-  function mostrarMasContenido() {
-    var elemento = document.getElementById("contenido-oculto");
-    elemento.style.display = "block";
-  }
-</script>
 
 <link rel="stylesheet" href="../assets/css/estilo juegos.css">
 <link rel="stylesheet" href="juegos.css ">

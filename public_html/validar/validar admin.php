@@ -35,7 +35,7 @@ function acceso_admin() {
     
     else{
 
-        header('Location: ../adminitrador/admin.html');
+        header('Location: ../administrador/admin.html');
         session_destroy();
 
     }

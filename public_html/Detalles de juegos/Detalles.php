@@ -1,4 +1,19 @@
 <?php
+session_start();
+error_reporting(0);
+
+$validar = $_SESSION['correo_usuario'];
+
+if( $validar == null || $validar = ''){
+	header("Location: Detalles-invitado.php");
+	die();
+}
+include('../conexiones/conexion.php');
+
+  $sql = "SELECT * FROM usuario";
+  $resultado=mysqli_query($mysqli, $sql);
+  $filas=mysqli_fetch_array($resultado);
+
 include('../conexiones/conexion.php');
 
 $id = $_GET['id'];
@@ -7,15 +22,6 @@ $id = $_GET['id'];
 	$resultado = $mysqli->query($sql);
 	$row = $resultado->fetch_array(MYSQLI_ASSOC);
 
-  $sql2 = "SELECT * FROM detalle_juego";
-  $resultado2 = $mysqli->query($sql2);
-	$row2 = $resultado2->fetch_array(MYSQLI_ASSOC);
-
-
-  $sql3 = "INSERT INTO detalle_juego (valoracion, region)
-  VALUE()";
-  $resultado3 = $mysqli->query($sql3);
-	$row3 = $resultado2->fetch_array(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -81,14 +87,16 @@ $id = $_GET['id'];
   <h1><a href="../index.html"><h1>OASIS VIRTUAL</h1></a></h1>
   <h3 class="span loader"><span class="m">TU </span><span class="m">ESCAPE </span><span class="m">DE </span><span class="m">LA </span><span class="m">REALIDAD</span></h3>
   <div class="nav-container">
-    <a class="nav-tab" href="#">Menu</a>
-    <!-- Agregamos el contenido desplegable -->
+  <a class="nav-tab" href="#" >☰Perfil</a>
     <div class="nav-dropdown">
-      <a class="nav-2 nav-3" href="../iniciar sesion usuario.html">Inicar Sesion</a>
-      <a class="nav-2 nav-3" href="../registrar usuario.html">Registrarse</a>
+      <a style="font-size: 3vw;" class="nav-2 nav-3">Bienvenido, <?php echo $_SESSION['correo_usuario']; ?></a>
+      <a class="nav-2 nav-3" href="../Perfiles/inicio.php">Perfil</a>
+      <a class="nav-2 nav-3" href="../iniciar sesion usuario.html">Compras</a>
+      <a class="nav-2 nav-3" href="../registrar usuario.html">Libreria de claves</a>
+      <a class="nav-2 nav-3" href="../validar/cerrarSesion.php"">Cerrar Sesion</a>
     </div>
     <a class="nav-2" href="../index.html#sobre-nosotros">SobreNosotros</a>
-    <a class="nav-4" href="../Lista de juegos/juegos.html#juegos">Ver juegos</a>
+    <a class="nav-4" href="../Lista de juegos/juegos.php#juegos">Ver juegos</a>
     <a class="nav-2" href="../index.html#galeria">Galeria</a>
     <a class="nav-tab" href="#Contactos">Contacto</a>
     <button class="scroll-top-btn" onclick="scrollToTop()">
@@ -122,9 +130,15 @@ $id = $_GET['id'];
           <h4>Plataforma:<a><br><?php echo $row['plataforma'];?></a></h4>
         </div>
       </div>
-      <button style="position: relative; left: 0px; top: 5px;" >Agregar al carrito</button><h1><a style="position: relative; top: 0px; left: 0px" href="#descripcion">Descripcion</a></h1>
+      <button style="position: relative; left: 0px; top: 5px;" onclick="comprar(<?php echo $id; ?>)">Agregar al carrito</button><h1><a style="position: relative; top: 0px; left: 0px" href="#descripcion">Descripcion</a></h1>
     </div>
   </div>
+
+	<script>
+        function comprar(id) {
+          window.location.href = "comprar.php?id=" + id;
+        }
+    </script>
 
 </section>
 <section class="slider" id="descripcion">

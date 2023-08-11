@@ -27,13 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Obtener el juego seleccionado para editar
 if (isset($_GET['id'])) {
     $edit_id = $_GET['id'];
-    $sql = "SELECT inventario.id_inventario, inventario.id_juego, juegos.nombre_juego, inventario.cantidad FROM inventario JOIN juegos ON inventario.id_juego = juegos.id_juego WHERE inventario.id_inventario = '".$edit_id."'";
+    $sql = "SELECT inventario.id_inventario, inventario.id_juego, juegos.nombre_juego, inventario.cantidad 
+	FROM inventario JOIN juegos ON inventario.id_juego = juegos.id_juego WHERE inventario.id_inventario = '".$edit_id."'";
     $result = $mysqli->query($sql);
 
     // Mostrar los datos en inputs de HTML para editar
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-    
     } else {
         echo "No se encontraron registros.";
     }
@@ -46,7 +46,6 @@ $mysqli->close();
 ?>
 <html lang="es">
 	<head>
-		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="cssss/bootstrap.min.css" rel="stylesheet">
 		<link href="cssss/bootstrap-theme.css" rel="stylesheet">
@@ -64,7 +63,7 @@ $mysqli->close();
 				<div class="form-group">
 					<label for="nombre" class="col-sm-2 control-label">IDJuego</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="id_juego" placeholder="IDjuego" value="<?php echo $row['id_juego']; ?>" disabled>
+						<input type="text" class="form-control" name="id_juego" placeholder="IDjuego" value="<?php echo $row['inventario.id_juego']; ?>" disabled>
 					</div>
 				</div>
 				
@@ -73,7 +72,7 @@ $mysqli->close();
 				<div class="form-group">
 					<label for="apellido" class="col-sm-2 control-label">Nombre Juego</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="nombre_juego" placeholder="Juego" value="<?php echo $row['nombre_juego']; ?>"  required>
+						<input type="text" class="form-control" name="nombre_juego" placeholder="Juego" value="<?php echo $row['juegos.nombre_juego']; ?>"  required>
 					</div>
 				</div>
 				

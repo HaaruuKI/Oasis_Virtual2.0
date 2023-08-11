@@ -1,4 +1,18 @@
 <?php
+session_start();
+error_reporting(0);
+
+$validar = $_SESSION['correo_usuario'];
+
+if( $validar == null || $validar = ''){
+	header("Location: ../index.html");
+	die();
+}
+include('../conexiones/conexion.php');
+$sql = "SELECT * FROM usuario";
+$resultado=mysqli_query($mysqli, $sql);
+$filas=mysqli_fetch_array($resultado);
+
 include('../conexiones/conexion.php');
 
 $id = $_GET['id'];
@@ -32,9 +46,14 @@ $id = $_GET['id'];
 <link rel="stylesheet" href="../assets/css/oasis.css">
 <link rel="stylesheet" href="../assets/css/responsive.css">
 <link rel="stylesheet" href="detalles.css">
+
 <style>img {aspect-ratio: 2/1; object-fit: fill;}</style>
 
 <style>
+  body{
+    background-color: #1e1f26;
+  }
+
   .nav-4 {
   display: flex;
   justify-content: center;
@@ -51,16 +70,47 @@ $id = $_GET['id'];
   background: #ff214f;
   transition: all 0.5s ease;
 }
-
-</style>
-<style>
-    .platform {
+.platform {
         margin-bottom: 20px;
     }
     .platform img {
         display: inline-block;
         margin-right: 10px;
     }
+
+  /* Estilos para el contenedor principal */
+  .recuadro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%; /* Ajusta el ancho del recuadro según tus necesidades */
+    min-width: 200px; /* Ancho mínimo del recuadro */
+    background-color: #1e1f21;
+    border: 2px #1e1f21;
+    padding: 10px;
+    margin: 20px;
+    color: white;
+    text-align: center;
+  }
+
+  img {
+    width: 150px; /* Ajusta el tamaño según lo necesites */
+    height: 100px;
+    margin-right: 10px; /* Agrega margen derecho si es necesario */
+    display: start;
+}
+
+.boton{
+    border-radius: 10px; 
+    margin: 10px;
+    padding: 10px; 
+    background-color:#ff214f;
+    color: #ffff;
+}
+.p{
+    padding: 10px
+}
 </style>
 </head>
 <body>
@@ -68,14 +118,17 @@ $id = $_GET['id'];
 <section class="nav">
   <!-- <span class="m">I</span><span class="m">T</span><span class="m">S</span><span class="m">&nbsp;</span><span class="m">o</span><span class="m">f</span><span class="m">&nbsp;</span><span class="m">T</span><span class="m">E</span><span class="m">C</span><span class="m">H</span><span class="m">N</span><span class="m">O</span><span class="m">L</span><span class="m">O</span><span class="m">G</span><span class="m">I</span><span class="m">E</span><span class="m">S</span> -->
   <!-- <a class="nav-tab" href="#tab-vite"></a><span class="nav-tab-slider"></span> -->
-  <h1><a href="#juegos"><h1>DESCRIPCION</h1></a></h1>
+  <h1><a href="#comprar"><h1>COMPRAR</h1></a></h1>
   <h1><a href="../index.html"><h1>OASIS VIRTUAL</h1></a></h1>
   <h3 class="span loader"><span class="m">TU </span><span class="m">ESCAPE </span><span class="m">DE </span><span class="m">LA </span><span class="m">REALIDAD</span></h3>
   <div class="nav-container">
-  <a class="nav-tab" href="#" >Iniciar</a>
+  <a class="nav-tab" href="#" >☰Perfil</a>
     <div class="nav-dropdown">
-      <a class="nav-2 nav-3" href="../iniciar sesion usuario.html">Iniciar Sesion</a>
-      <a class="nav-2 nav-3" href="../registrar usuario.html">Registrarse</a>
+      <a style="font-size: 3vw;" class="nav-2 nav-3">Bienvenido, <?php echo $_SESSION['correo_usuario']; ?></a>
+      <a class="nav-2 nav-3" href="../Perfiles/inicio.php">Perfil</a>
+      <a class="nav-2 nav-3" href="../iniciar sesion usuario.html">Compras</a>
+      <a class="nav-2 nav-3" href="../registrar usuario.html">Libreria de claves</a>
+      <a class="nav-2 nav-3" href="../validar/cerrarSesion.php"">Cerrar Sesion</a>
     </div>
     <a class="nav-2" href="../index.html#sobre-nosotros">SobreNosotros</a>
     <a class="nav-4" href="../Lista de juegos/juegos.php#juegos">Ver juegos</a>
@@ -88,49 +141,88 @@ $id = $_GET['id'];
 </section>
 <main class="main">
 
-<section class="slider" id="juegos">
+<section class="slider" id="comprar">
     <br>
-<div style="background-color: transparent; border: none" class="card">
-  <div class="left">
-  </div>
-  <div style="padding: 0 0px;position: fixed;  position: fixed; bottom: 7%; width: 73%;" class="right"><img style="width: 400px; display: block" class="helmet" src="<?php echo $row['imagen'] ?>" alt="..."/>
-    <div class="productInfo"style="position: relative; left: 46px; top: -36px;">
-      <h1 style="font-size: 2vw; width: 600px; position: relative; left: -256px; top: 15px;"><?php echo $row['nombre_juego'] ?></h1>
-      <h2>$<?php echo $row['precio'] ?></h2>
-      <div class="details">
-        <div class="size">
-          <h4>VALORACION</h4>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-        </form>
-        </div>
-        <div class="durability">
-          <h4>Desarrollador:<a><br><?php echo $row['desarrollador'];?></a></h4>
-          <h4>Plataforma:<a><br><?php echo $row['plataforma'];?></a></h4>
-        </div>
-      </div>
-      <button style="position: relative; left: 0px; top: 5px;" id="iniciar">Agregar al carrito</button><h1><a style="position: relative; top: 0px; left: 0px" href="#descripcion">Descripcion</a></h1>
+    <div class="recuadro">
+        <table >
+        <th class="p" ><img src="<?php echo $row['imagen'];?>" alt=""></th>
+        <th class="p" ><?php echo $row['nombre_juego'];?></th>
+        <th class="p" ><?php echo $row['precio'];?></th>
+        </table>
     </div>
-  </div>
-  <script>
-document.getElementById("iniciar").onclick = function() {
-    window.location.href = "../iniciar sesion usuario.html#sesion";
-};
+    <div class="recuadro">
+    <div>
+        <h3>Metodo de pago</h3>
+        <a style="padding: 10px; cursor: pointer;" id="mostrarTarjeta" >Tarjeta </a>
+        <a>|</a>
+        <a style="padding: 10px; cursor: pointer;" id="mostrarOasis">OASIS WALLET</a>
+    </div>
+    <div>
+        <!-- <button class="boton" onclick="pagar()">Comprar</button> -->
+        </div>
+    </div>
+    <div>
+      <div id="miDivTarjeta" style="display: none; ">
+        <h3>Debito/Credito</h3>
+        
+        
+        
+        <label for="">
+        Numero de Tarjeta
+        <input type="text" >
+        </label>
+        <label for="">
+        Nombre del propietario de la tarjeta
+        <input type="text" >
+        </label>
+        <label for="">
+        Fecha de expiracion
+        <input type="text" >
+        </label>
+        <label for="">
+        CVC
+        <input type="text" >
+        </label>
+        <button class="boton" id="mostarAlerta">Comprar</button>
+      </div>
+      <div id="miDivOasis" style="display: none;">
+        <h3>HOLA</h3>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <button class="boton" id="mostarAlerta">Comprar</button>
+      </div>
+    </div>
+<script>
+  const mostrarTarjeta = document.getElementById('mostrarTarjeta');
+  const miDivTarjeta = document.getElementById('miDivTarjeta');
+
+
+  mostrarTarjeta.addEventListener('click', () => {
+    miDivOasis.style.display = 'none';
+    miDivTarjeta.style.display = 'block';
+  });
+  const mostarOasis = document.getElementById('mostrarOasis');
+  const miDivOasis = document.getElementById('miDivOasis');
+
+    mostrarOasis.addEventListener('click', () => {
+    miDivTarjeta.style.display = 'none';
+    miDivOasis.style.display = 'block';
+  });
 </script>
-
-
+    <script>
+    function mostrarAlerta() {
+        if(metodo != null ){
+        alert("La compra fue exitosa");
+}
+}
+document.getElementById("mostarAlerta").addEventListener("click", mostrarAlerta);
+</script>
 </section>
-<section class="slider" id="descripcion">
-<h1>Descripcion</h1>
-<br>
-  <h4>Fecha creacion<a><br><?php echo $row['fecha_creacion'];?></a></h4>
-  <h4>Genero:<a><br><?php echo $row['genero'];?></a></h4>
-  <br><br>
-  <p><?php echo $row['descripcion'];?></p>
-</section>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+  
   </main>
 <canvas class="background"></canvas><!-- SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuIQ== -->
 <!-- partial -->

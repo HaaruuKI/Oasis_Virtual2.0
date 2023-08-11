@@ -2,10 +2,6 @@
 // Conexión a la base de datos
 require_once('../conexiones/conexion.php');
 
-// Verificar la conexión
-if ($mysqli->connect_error) {
-    die("Error de conexión a la base de datos: " . $mysqli->connect_error);
-}
 
 // Obtener los valores del formulario
 $nombre_usuario = $_POST['nombre_usuario'];

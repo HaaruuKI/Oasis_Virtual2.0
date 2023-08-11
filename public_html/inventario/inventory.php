@@ -9,15 +9,11 @@ if( $validar == null || $validar = ''){
 	header("Location: ../administrador/admin.html");
 	die();
 }
-
-
+include('../conexiones/conexion.php');
+$sql = "SELECT * FROM administrador";
+$resultado=mysqli_query($mysqli, $sql);
+$filas=mysqli_fetch_array($resultado);
 ?>
-<?php
-include ('../conexiones/conexion.php');
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -172,7 +168,7 @@ include ('../conexiones/conexion.php');
 				<figcaption class="navLateral-body-cr hide-on-tablet">
 					<span>
 						<?php echo $_SESSION['correo_admin']; ?><br>
-						<small></small>
+						<small><?php echo $filas['nombre_admin']; ?></small>
 					</span>
 				</figcaption>
 			</figure>
@@ -361,8 +357,6 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["nombre_juego"] . "</td>";
         echo "<td>" . $row["total_cantidad"] . "</td>"; // Display total_cantidad instead of cantidad
 		echo "<td>";
-		echo "<a style=' color: #337ab7 ;' href='../CRUD/Modificar inventario.php?id=". $row["id_inventario"] . "' >Editar</a>";
-		echo "<a style=' color: #337ab7 ;' class='cursor' onclick='mostrarConfirmacion(". $row["id_inventario"] . ")'>Borrar</a>";
 		echo "</td>";
 		echo "</tr>";
             }
@@ -370,35 +364,9 @@ if ($result->num_rows > 0) {
             echo "<tr><td colspan='4'>No se encontraron resultados.</td></tr>";
         }
 ?>										
-							</tbody>
-							</table>
-							</div>
-							
-		<div class="confirmacion-borrado" id="confirmacionBorrado">
-        <h2>Confirmación de borrado</h2>
-        <p>¿Estás seguro de que deseas borrar esta fila?</p>
-        <div class="botones">
-            <button onclick="borrarFila()">Aceptar</button>
-            <button onclick="cancelarBorrado()">Cancelar</button>
-        </div>
-    </div>
-
-    <script>
-        function mostrarConfirmacion(id) {
-            document.getElementById("confirmacionBorrado").style.display = "block";
-            // Puedes almacenar el ID en una variable global para usarlo en la función borrarFila()
-            window.idBorrar = id;
-        }
-
-        function borrarFila() {
-            var id = window.idBorrar;
-            window.location.href = "../CRUD/Borrar inventario.php?id=" + id;
-        }
-
-        function cancelarBorrado() {
-            document.getElementById("confirmacionBorrado").style.display = "none";
-        }
-    </script>
+						</tbody>
+					</table>
+				</div>							
 			</div>
 		</div>
 	</section>
