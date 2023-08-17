@@ -140,7 +140,6 @@ $id = $_GET['id'];
   </div>
 </section>
 <main class="main">
-
 <section class="slider" id="comprar">
     <br>
     <div class="recuadro">
@@ -163,35 +162,37 @@ $id = $_GET['id'];
     </div>
     <div>
       <div id="miDivTarjeta" style="display: none; ">
-        <h3>Debito/Credito</h3>
-        
-        
-        
-        <label for="">
-        Numero de Tarjeta
-        <input type="text" >
-        </label>
-        <label for="">
-        Nombre del propietario de la tarjeta
-        <input type="text" >
-        </label>
-        <label for="">
-        Fecha de expiracion
-        <input type="text" >
-        </label>
-        <label for="">
-        CVC
-        <input type="text" >
-        </label>
-        <button class="boton" id="mostarAlerta">Comprar</button>
+      <h3>PROXIMAMENTE</h3>  
+      <!-- <div class="form-group">
+              <label>Numero de tarjeta *</label>
+              <input type="text" placeholder="Introduce tu nombre..." required class="form-control" name="nombre">
+            </div>
+            <div class="form-group">
+              <labe>Nombre del propietario de la tarjeta *</label>
+              <input type="text" placeholder="Introduce tus apellidos..." required class="form-control" name="apellidos">
+            </div>
+            <div class="form-group">
+              <label>Fecha de expiracion *</label>
+              <input type="mail" placeholder="Introduce tu email..." required class="form-control" name="email">
+            </div>
+            <div class="form-group">
+              <label>CVC *</label>
+              <input type="text" placeholder="Introduce tu dirección..." required class="form-control" name="direccion">
+            </div>
+            <button class="boton" id="mostarAlerta">Comprar</button> -->
       </div>
+      <form action="pagar_con_oasis_wallet.php" method="post">
       <div id="miDivOasis" style="display: none;">
-        <h3>HOLA</h3>
-        <input type="text">
-        <input type="text">
-        <input type="text">
-        <input type="text">
-        <button class="boton" id="mostarAlerta">Comprar</button>
+      <H3>OASIS WALLET</H3>
+            <div class="form-group">
+              <h1><?php echo $filas['balance']; ?></h1>
+              <input type="hidden" id="idJuego" name="idJuego" value="<?php echo $row['id_juego'];?>" >
+              <input type="hidden" id="idUsuario" name="precioJuego" value="<?php echo $row['precio'];?>" >
+              <input type="hidden" id="precioJuego" name="idUsuario" value="<?php echo $filas['id_usuario'];?>" >
+              <input  class="boton" type="submit" value="Comprar">
+            </div>
+            </form>
+          </div>
       </div>
     </div>
 <script>
@@ -210,14 +211,6 @@ $id = $_GET['id'];
     miDivTarjeta.style.display = 'none';
     miDivOasis.style.display = 'block';
   });
-</script>
-    <script>
-    function mostrarAlerta() {
-        if(metodo != null ){
-        alert("La compra fue exitosa");
-}
-}
-document.getElementById("mostarAlerta").addEventListener("click", mostrarAlerta);
 </script>
 </section>
 <br><br><br><br><br><br><br><br><br><br><br><br>

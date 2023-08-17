@@ -89,33 +89,12 @@ include('../conexiones/conexion.php');
     <div class="nav-dropdown">
       <a style="font-size: 3vw;" class="nav-2 nav-3">Bienvenido, <?php echo $_SESSION['correo_usuario']; ?></a>
       <a class="nav-2 nav-3" href="../Perfiles/inicio.php">Perfil</a>
-      <a class="nav-2 nav-3" href="../iniciar sesion usuario.html">Compras</a>
-      <a class="nav-2 nav-3" href="../registrar usuario.html">Libreria de claves</a>
+      <!-- <a class="nav-2 nav-3" href="../iniciar sesion usuario.html">Compras</a>
+      <a class="nav-2 nav-3" href="../registrar usuario.html">Libreria de claves</a> -->
       <a class="nav-2 nav-3" href="../validar/cerrarSesion.php"">Cerrar Sesion</a>
     </div>
-<!-- <script>  
-  // Mostrar el nombre de usuario almacenado en el LocalStorage
-  var email = localStorage.getItem("email");
-  if (email) {
-    
-    var welcomeMessage = document.getElementById("bienvenida");
-    welcomeMessage.innerHTML = "Bienvenido, " + email + ".";
-  } else {
-    // Si el nombre de usuario no está almacenado, redireccionar al usuario a la página de inicio de sesión
-    window.location.href = "../Lista de juegos/juegos-invitado.html"
-  }
-  
-  // Función para cerrar la sesión
-  function cerrarSesion() {
-    // Limpiar el nombre de usuario del LocalStorage
-    localStorage.removeItem("email");
-    // Redireccionar al usuario a la página de inicio de sesión
-    window.location.href = "../index.html";
-  }
-  </script> -->
-  
     <a class="nav-2" href="../index.html#sobre-nosotros">SobreNosotros</a>
-    <a class="nav-4" href="./juegos.html">Ver juegos</a>
+    <a class="nav-4" href="./juegos.php">Ver juegos</a>
     <a class="nav-2" href="../index.html#galeria">Galeria</a>
     <a class="nav-tab" href="#Contactos">Contacto</a>  
     <button class="scroll-top-btn" onclick="scrollToTop()">
